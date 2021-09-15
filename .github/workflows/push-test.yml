@@ -11,7 +11,7 @@ jobs:
               with:
                   ruby-version: 2.6.6
             - name: Run bundle install
-                 run:
+              run:
                     bundle install
             - name: Build and test with rspec
-                  run: bundle exec rspec spec
+              run: bundle exec rspec spec
