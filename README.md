@@ -2,12 +2,13 @@
 
 ## Before you start
 
-run `bundle install` in the terminal.
+1) Clone the respository to the file/folder of your choice. 
+2) Then navigate to the `tic_tac_toe` folder in your terminal and run `bundle install`. 
 
 ## Run Program
 
-run `ruby lib/game.rb` in the terminal.
+1) Run `ruby lib/game.rb` in the terminal.
 
 ## Run Tests
 
-run  `bundle exec rspec` in the terminal.
+1) Run  `bundle exec rspec` in the terminal.
