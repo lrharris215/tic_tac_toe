@@ -6,4 +6,9 @@ describe "Game" do
         pass = true
         expect(pass).to eq(true)
    end
+
+   it "prints a 3x3 board to the console" do 
+      g = Game.new()
+      g.print_board()
+   end
 end
