@@ -4,7 +4,7 @@
 
 ### Installing Ruby
 
-1. If Ruby is not already installed on your machine, you can find detailed instructions [here](https://www.ruby-lang.org/en/documentation/installation/)
+1. If Ruby is not already installed on your machine, you can find detailed instructions [here](https://www.ruby-lang.org/en/documentation/installation/).
 2. This project uses Ruby Version 2.6.3. If there are any issues running this program, please check your Ruby version.
 
 ### Installing the Program
