@@ -1,4 +1,4 @@
-name: Push Test
+name: Unit Tests for Tic-Tac-Toe
 on: [push]
 jobs:
     build:
@@ -11,7 +11,6 @@ jobs:
               with:
                   ruby-version: 2.6.3
             - name: Run bundle install
-              run:
-                    bundle install
+              run: bundle install
             - name: Build and test with rspec
               run: bundle exec rspec spec
