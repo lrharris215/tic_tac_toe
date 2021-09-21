@@ -8,19 +8,24 @@ describe "Game" do
   end
 
   it "prints a 3x3 board to the console" do
-    g = Game.new
-    expect do
-      g.print_board
-    end.to output("
-             |       |
-         1   |   2   |   3
-       _____ | _____ | _____
-             |       |
-         4   |   5   |   6
-       _____ | _____ | _____
-             |       |
-         7   |   8   |   9
-             |       |
-        \n").to_stdout
+    class TestDisplay
+      attr_reader :state
+      def initialize
+        @state = []
+      end
+
+      def output(message)
+        @state.push(message)
+      end
+    end
+
+    class TestPresenter
+      def print_board
+        "______"
+      end
+    end
+    g = Game.new(TestDisplay.new, TestPresenter.new)
+    g.play
+    expect(g.display.state[0]).to eq("______")
   end
 end
