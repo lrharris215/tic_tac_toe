@@ -1,20 +1,16 @@
 require_relative './board.rb'
 class Presenter
-    def initialize(board)
-        @board = board
-    end
 
-
-  def print_board
+  def print_board(board)
     "
              |       |
-         #{@board[0]}   |   #{@board[1]}   |   #{@board[2]}
+         #{board[0]}   |   #{board[1]}   |   #{board[2]}
        _____ | _____ | _____
              |       |
-         #{@board[3]}   |   #{@board[4]}   |   #{@board[5]}
+         #{board[3]}   |   #{board[4]}   |   #{board[5]}
        _____ | _____ | _____
              |       |
-         #{@board[6]}   |   #{@board[7]}   |   #{@board[8]}
+         #{board[6]}   |   #{board[7]}   |   #{board[8]}
              |       |
         "
   end

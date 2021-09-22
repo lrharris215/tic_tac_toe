@@ -3,9 +3,10 @@ require_relative "./displayer"
 require_relative './board.rb'
 class Game
   attr_reader :display
-  def initialize(display, presenter)
+  def initialize(display, presenter, board)
     @display = display
     @presenter = presenter
+    @board = board
   end
 
   def start
@@ -13,7 +14,7 @@ class Game
   end
 
   def play
-    @display.output(@presenter.print_board)
+    @display.output(@presenter.print_board(@board))
   end
 
   def place_mark(player, position)
@@ -21,9 +22,9 @@ class Game
   end
 end
 
-board = Board.new()
-presenter = Presenter.new(board)
+board = Board.new
+presenter = Presenter.new
 displayer = Displayer.new($stdout)
-game = Game.new(displayer, presenter)
+game = Game.new(displayer, presenter, board)
 game.start
 game.play

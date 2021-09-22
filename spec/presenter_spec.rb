@@ -5,8 +5,8 @@ require_relative '../lib/board.rb'
 describe "Presenter" do
   it "Returns the correct game board" do
     board = Board.new
-    presenter = Presenter.new(board)
-    expect(presenter.print_board).to eq("
+    presenter = Presenter.new
+    expect(presenter.print_board(board)).to eq("
              |       |
          1   |   2   |   3
        _____ | _____ | _____
