@@ -22,6 +22,14 @@ describe "Game" do
     expect(pass).to eq(true)
   end
 
+  it "displays the welcome message on game start" do
+    g = Game.new(TestDisplay.new, TestPresenter.new)
+
+    g.start
+
+    expect(g.display.state[0]).to eq("Welcome to Tic Tac Toe!")
+  end
+
   it "displays what it is presented with" do
     g = Game.new(TestDisplay.new, TestPresenter.new)
     g.play
