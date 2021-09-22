@@ -16,18 +16,7 @@ class Game
   end
 end
 
-# board = "
-#              |       |
-#          1   |   2   |   3
-#        _____ | _____ | _____
-#              |       |
-#          4   |   5   |   6
-#        _____ | _____ | _____
-#              |       |
-#          7   |   8   |   9
-#              |       |
-#         "
-p = Presenter.new
+p = Presenter.new()
 d = Displayer.new($stdout)
 g = Game.new(d, p)
 g.start
