@@ -16,7 +16,7 @@ class Game
   end
 end
 
-p = Presenter.new()
+p = Presenter.new
 d = Displayer.new($stdout)
 g = Game.new(d, p)
 g.start
