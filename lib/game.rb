@@ -16,10 +16,6 @@ class Game
   def play
     @display.output(@presenter.print_board(@board))
   end
-
-  def place_mark(player, position)
-
-  end
 end
 
 board = Board.new
