@@ -7,7 +7,7 @@ describe "Game" do
     expect(pass).to eq(true)
   end
 
-  it "prints a 3x3 board to the console" do
+  it "displays what it is presented with" do
     class TestDisplay
       attr_reader :state
       def initialize

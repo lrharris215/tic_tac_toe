@@ -8,21 +8,9 @@ class Game
   end
 
   def play
+    @display.output("Welcome to Tic-Tac-Toe!")
     @display.output(@presenter.print_board)
   end
-  # def print_board
-  #   puts "
-  #            |       |
-  #        1   |   2   |   3
-  #      _____ | _____ | _____
-  #            |       |
-  #        4   |   5   |   6
-  #      _____ | _____ | _____
-  #            |       |
-  #        7   |   8   |   9
-  #            |       |
-  #       "
-  # end
 end
 
 board = "
