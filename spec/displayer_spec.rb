@@ -9,7 +9,7 @@ end
 
 describe "Displayer" do
   it "applies the output function to the message" do
-    d = Displayer.new(TestOutputFunction.new)
-    expect(d.output("message")).to eq("message")
+    display = Displayer.new(TestOutputFunction.new)
+    expect(display.output("message")).to eq("message")
   end
 end

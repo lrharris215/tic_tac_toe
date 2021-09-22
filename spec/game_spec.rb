@@ -24,16 +24,16 @@ describe "Game" do
   end
 
   it "displays the welcome message on game start" do
-    g = Game.new(TestDisplay.new, TestPresenter.new)
+    game = Game.new(TestDisplay.new, TestPresenter.new)
 
-    g.start
+    game.start
 
-    expect(g.display.state[0]).to eq("Welcome to Tic Tac Toe!")
+    expect(game.display.state[0]).to eq("Welcome to Tic Tac Toe!")
   end
 
   it "it displays the board from the presenter" do
-    g = Game.new(TestDisplay.new, TestPresenter.new)
-    g.play
-    expect(g.display.state[0]).to eq("______")
+    game = Game.new(TestDisplay.new, TestPresenter.new)
+    game.play
+    expect(game.display.state[0]).to eq("______")
   end
 end

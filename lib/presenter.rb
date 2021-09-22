@@ -1,6 +1,6 @@
 class Presenter
-  def initialize
-    @board = "
+  def print_board
+    "
              |       |
          1   |   2   |   3
        _____ | _____ | _____
@@ -11,9 +11,5 @@ class Presenter
          7   |   8   |   9
              |       |
         "
-  end
-
-  def print_board
-    @board
   end
 end
