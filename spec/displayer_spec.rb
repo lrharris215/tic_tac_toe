@@ -1,15 +1,15 @@
 require "rspec"
-require_relative "../lib/displayer.rb"
+require_relative "../lib/displayer"
 
-describe "Displayer" do 
-            class TestOutputFunction
-            def puts(message)
-                return message
-            end
-        end
-    it "applies the output function to the message" do
+class TestOutputFunction
+  def puts(message)
+    message
+  end
+end
 
-        d = Displayer.new(TestOutputFunction.new())
-        expect(d.output("message")).to eq("message")
-    end
+describe "Displayer" do
+  it "applies the output function to the message" do
+    d = Displayer.new(TestOutputFunction.new)
+    expect(d.output("message")).to eq("message")
+  end
 end

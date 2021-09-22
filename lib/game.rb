@@ -27,7 +27,7 @@ end
 #          7   |   8   |   9
 #              |       |
 #         "
-p = Presenter.new()
+p = Presenter.new
 d = Displayer.new($stdout)
 g = Game.new(d, p)
 g.start

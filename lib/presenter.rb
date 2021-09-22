@@ -1,5 +1,5 @@
 class Presenter
-  def initialize()
+  def initialize
     @board = "
              |       |
          1   |   2   |   3
