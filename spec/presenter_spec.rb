@@ -1,9 +1,11 @@
 require "rspec"
 require_relative "../lib/presenter"
+require_relative '../lib/board.rb'
 
 describe "Presenter" do
   it "Returns the correct game board" do
-    presenter = Presenter.new
+    board = Board.new
+    presenter = Presenter.new(board)
     expect(presenter.print_board).to eq("
              |       |
          1   |   2   |   3
