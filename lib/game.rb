@@ -1,6 +1,6 @@
 require_relative "./presenter"
 require_relative "./displayer"
-require_relative './board.rb'
+require_relative "./board"
 class Game
   attr_reader :display
   def initialize(display, presenter, board)

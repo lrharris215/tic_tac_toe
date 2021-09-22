@@ -1,6 +1,5 @@
-require_relative './board.rb'
+require_relative "./board"
 class Presenter
-
   def print_board(board)
     "
              |       |

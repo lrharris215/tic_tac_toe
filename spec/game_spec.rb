@@ -14,14 +14,14 @@ end
 
 class TestPresenter
   def print_board(board)
-    return board.board
+    board.board
   end
 end
 
 class TestBoard
   attr_reader :board
   def initialize
-   @board = [1,2,3]
+    @board = [1, 2, 3]
   end
 end
 
@@ -42,10 +42,9 @@ describe "Game" do
   it "it displays the board from the presenter" do
     game = Game.new(TestDisplay.new, TestPresenter.new, TestBoard.new)
     game.play
-    expect(game.display.state[0]).to eq([1,2,3])
+    expect(game.display.state[0]).to eq([1, 2, 3])
   end
 
-  it "Allows a player to place their mark on the board" do 
-    
+  it "Allows a player to place their mark on the board" do
   end
 end
