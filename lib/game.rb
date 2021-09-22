@@ -25,6 +25,6 @@ board = "
              |       |
         "
 p = Presenter.new(board)
-d = Displayer.new(STDOUT)
+d = Displayer.new($stdout)
 g = Game.new(d, p)
 g.play
