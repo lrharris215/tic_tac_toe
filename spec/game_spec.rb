@@ -1,5 +1,6 @@
 require "rspec"
 require_relative "../lib/game"
+
 class TestDisplay
   attr_reader :state
   def initialize
@@ -30,7 +31,7 @@ describe "Game" do
     expect(g.display.state[0]).to eq("Welcome to Tic Tac Toe!")
   end
 
-  it "displays what it is presented with" do
+  it "it displays the board from the presenter" do
     g = Game.new(TestDisplay.new, TestPresenter.new)
     g.play
     expect(g.display.state[0]).to eq("______")
