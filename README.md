@@ -15,7 +15,7 @@
 
 ## Run Program
 
-1. Run `ruby lib/game.rb` in the terminal.
+1. Run `ruby play_game.rb` in the terminal.
 
 ## Run Tests
 
