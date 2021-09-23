@@ -18,7 +18,7 @@ class Game
   end
 
   def play
-    #use a while loop later to keep game going
+    # use a while loop later to keep game going
     print_board
     place_mark(@player_1, get_player_input)
     print_board
@@ -35,7 +35,6 @@ class Game
 
   def get_player_input
     @display.output("Where would you like to put your mark?")
-    position = gets.chomp
-    return position
+    gets.chomp
   end
 end

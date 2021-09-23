@@ -1,4 +1,4 @@
-require_relative './lib/game.rb'
+require_relative "./lib/game"
 
 board = Board.new
 presenter = Presenter.new

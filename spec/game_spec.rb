@@ -23,8 +23,8 @@ class TestBoard
   def initialize
     @board = [1, 2, 3]
   end
-  
-    def []=(num, val)
+
+  def []=(num, val)
     @board[num] = val
   end
 
@@ -35,7 +35,7 @@ end
 
 class TestPlayer
   def mark
-    return "Z"
+    "Z"
   end
 end
 
@@ -60,11 +60,19 @@ describe "Game" do
   end
 
   it "Allows a player to place their mark on the board" do
+    game = Game.new(TestDisplay.new, TestPresenter.new, TestBoard.new)
+    player = TestPlayer.new
+
+    game.place_mark(player, 1)
+    game.print_board
+    expect(game.display.state[0][0]).to eq("Z")
+  end
+
+  it "Receives input from the player" do
       game = Game.new(TestDisplay.new, TestPresenter.new, TestBoard.new)
-      player = TestPlayer.new
-      
-      game.place_mark(player, 1);
-      game.print_board
-      expect(game.display.state[0][0]).to eq("Z")
+      allow(game).to receive(:get_player_input).and_return("100")
+      input = game.get_player_input
+
+      expect(input).to eq("100")
   end
 end
