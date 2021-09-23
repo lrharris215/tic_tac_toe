@@ -55,7 +55,7 @@ describe "Game" do
 
   it "it displays the board from the presenter" do
     game = Game.new(TestDisplay.new, TestPresenter.new, TestBoard.new)
-    game.play
+    game.print_board
     expect(game.display.state[0]).to eq([1, 2, 3])
   end
 
@@ -64,7 +64,7 @@ describe "Game" do
       player = TestPlayer.new
       
       game.place_mark(player, 1);
-      game.play
+      game.print_board
       expect(game.display.state[0][0]).to eq("Z")
   end
 end
