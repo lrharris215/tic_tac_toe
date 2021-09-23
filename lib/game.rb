@@ -2,7 +2,7 @@ require_relative "./presenter"
 require_relative "./displayer"
 require_relative "./board"
 class Game
-  attr_reader :display
+  attr_reader :display, :board
   def initialize(display, presenter, board)
     @display = display
     @presenter = presenter
@@ -15,6 +15,10 @@ class Game
 
   def play
     @display.output(@presenter.print_board(@board))
+  end
+
+  def place_mark(player, position)
+    @board[position - 1] = player.mark
   end
 end
 

@@ -23,6 +23,20 @@ class TestBoard
   def initialize
     @board = [1, 2, 3]
   end
+  
+    def []=(num, val)
+    @board[num] = val
+  end
+
+  def place_mark(player, position)
+    @board[position - 1] = player.mark
+  end
+end
+
+class TestPlayer
+  def mark
+    return "Z"
+  end
 end
 
 describe "Game" do
@@ -46,5 +60,11 @@ describe "Game" do
   end
 
   it "Allows a player to place their mark on the board" do
+      game = Game.new(TestDisplay.new, TestPresenter.new, TestBoard.new)
+      player = TestPlayer.new
+      
+      game.place_mark(player, 1);
+      game.play
+      expect(game.display.state[0][0]).to eq("Z")
   end
 end
