@@ -40,38 +40,36 @@ class TestPlayer
 end
 
 describe "Game" do
+  before(:each) do
+    @game = Game.new(TestDisplay.new, TestPresenter.new, TestBoard.new)
+  end
   it "passes this example test" do
     pass = true
     expect(pass).to eq(true)
   end
 
   it "displays the welcome message on game start" do
-    game = Game.new(TestDisplay.new, TestPresenter.new, TestBoard.new)
+    @game.start
 
-    game.start
-
-    expect(game.display.state[0]).to eq("Welcome to Tic Tac Toe!")
+    expect(@game.display.state[0]).to eq("Welcome to Tic Tac Toe!")
   end
 
   it "it displays the board from the presenter" do
-    game = Game.new(TestDisplay.new, TestPresenter.new, TestBoard.new)
-    game.print_board
-    expect(game.display.state[0]).to eq([1, 2, 3])
+    @game.print_board
+    expect(@game.display.state[0]).to eq([1, 2, 3])
   end
 
   it "Allows a player to place their mark on the board" do
-    game = Game.new(TestDisplay.new, TestPresenter.new, TestBoard.new)
     player = TestPlayer.new
 
-    game.place_mark(player, 1)
-    game.print_board
-    expect(game.display.state[0][0]).to eq("Z")
+    @game.place_mark(player, 1)
+    @game.print_board
+    expect(@game.display.state[0][0]).to eq("Z")
   end
 
   it "Receives input from the player" do
-    game = Game.new(TestDisplay.new, TestPresenter.new, TestBoard.new)
-    allow(game).to receive(:get_player_input).and_return("100")
-    input = game.get_player_input
+    allow(@game).to receive(:get_player_input).and_return("100")
+    input = @game.get_player_input
 
     expect(input).to eq("100")
   end
