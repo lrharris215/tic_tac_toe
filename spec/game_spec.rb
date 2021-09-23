@@ -69,10 +69,10 @@ describe "Game" do
   end
 
   it "Receives input from the player" do
-      game = Game.new(TestDisplay.new, TestPresenter.new, TestBoard.new)
-      allow(game).to receive(:get_player_input).and_return("100")
-      input = game.get_player_input
+    game = Game.new(TestDisplay.new, TestPresenter.new, TestBoard.new)
+    allow(game).to receive(:get_player_input).and_return("100")
+    input = game.get_player_input
 
-      expect(input).to eq("100")
+    expect(input).to eq("100")
   end
 end
