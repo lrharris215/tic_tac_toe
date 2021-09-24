@@ -8,7 +8,7 @@ class Displayer
     @output_function.puts(message)
   end
 
-  def input()
+  def input
     @input_function.gets.chomp
   end
 end

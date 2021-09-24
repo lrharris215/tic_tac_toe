@@ -21,7 +21,7 @@ class Game
   def play
     # use a while loop later to keep game going
     print_board
-    @board.place_mark(@player_1.mark, get_player_input)
+    @board.place_mark(@player_1.mark, @player_1.get_input(@display))
     print_board
   end
 
@@ -29,8 +29,8 @@ class Game
     @display.output(@presenter.print_board(@board))
   end
 
-  def get_player_input
-    @display.output("Where would you like to put your mark?")
-    @display.input()
-  end
+  # def get_player_input
+  #   @display.output("Where would you like to put y our mark?")
+  #   @display.input()
+  # end
 end
