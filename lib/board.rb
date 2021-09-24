@@ -13,7 +13,8 @@ class Board
     @board[num]
   end
 
-  def place_mark(player, position)
-    @board[position - 1] = player.mark
+  def place_mark(mark, position)
+    pos = position.to_i - 1
+    @board[pos] = mark
   end
 end

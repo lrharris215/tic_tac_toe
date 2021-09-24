@@ -9,8 +9,9 @@ class Game
     @presenter = presenter
     @board = board
     @player_1 = Player.new("X")
-    @player_2 = Player.new("O")
-    @game_over = false
+    # These are for later
+    # @player_2 = Player.new("O")
+    # @game_over = false
   end
 
   def start
@@ -20,17 +21,12 @@ class Game
   def play
     # use a while loop later to keep game going
     print_board
-    place_mark(@player_1, get_player_input)
+    @board.place_mark(@player_1.mark, get_player_input)
     print_board
   end
 
   def print_board
     @display.output(@presenter.print_board(@board))
-  end
-
-  def place_mark(player, position)
-    pos = position.to_i
-    @board[pos - 1] = player.mark
   end
 
   def get_player_input

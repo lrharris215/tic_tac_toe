@@ -43,10 +43,6 @@ describe "Game" do
   before(:each) do
     @game = Game.new(TestDisplay.new, TestPresenter.new, TestBoard.new)
   end
-  it "passes this example test" do
-    pass = true
-    expect(pass).to eq(true)
-  end
 
   it "displays the welcome message on game start" do
     @game.start
@@ -62,7 +58,7 @@ describe "Game" do
   it "Allows a player to place their mark on the board" do
     player = TestPlayer.new
 
-    @game.place_mark(player, 1)
+    @game.board.place_mark(player, 1)
     @game.print_board
     expect(@game.display.state[0][0]).to eq("Z")
   end
