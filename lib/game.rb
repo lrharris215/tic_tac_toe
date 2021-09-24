@@ -28,9 +28,4 @@ class Game
   def print_board
     @display.output(@presenter.print_board(@board))
   end
-
-  # def get_player_input
-  #   @display.output("Where would you like to put y our mark?")
-  #   @display.input()
-  # end
 end

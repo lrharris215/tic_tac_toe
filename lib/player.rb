@@ -10,5 +10,3 @@ class Player
     display.input
   end
 end
-
-# Player.new("X")

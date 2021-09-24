@@ -62,11 +62,4 @@ describe "Game" do
     @game.print_board
     expect(@game.display.state[0][0]).to eq("Z")
   end
-
-  it "Receives input from the player" do
-    allow(@game).to receive(:get_player_input).and_return("100")
-    input = @game.get_player_input
-
-    expect(input).to eq("100")
-  end
 end
