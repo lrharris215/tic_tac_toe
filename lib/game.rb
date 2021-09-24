@@ -31,6 +31,6 @@ class Game
 
   def get_player_input
     @display.output("Where would you like to put your mark?")
-    gets.chomp
+    @display.input()
   end
 end
