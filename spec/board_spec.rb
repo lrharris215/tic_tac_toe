@@ -18,7 +18,7 @@ describe "Board" do
     it "Returns the correct position in the board array" do
         board = Board.new
 
-        expect(board.find_position(0)).to eq(1)
+        expect(board.find_position(1)).to eq(1)
     end
   end
 end
