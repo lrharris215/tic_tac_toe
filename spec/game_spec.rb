@@ -1,5 +1,7 @@
 require "rspec"
+require_relative "./spec_helper"
 require_relative "../lib/game"
+require_relative "../lib/constants"
 
 class TestDisplay
   attr_reader :state
@@ -10,30 +12,55 @@ class TestDisplay
   def output(message)
     @state.push(message)
   end
+
+  def input
+    1
+  end
 end
 
 class TestPresenter
-  def print_board
-    "______"
+  def print_board(board)
+    board.cells.dup
   end
 end
-describe "Game" do
-  it "passes this example test" do
-    pass = true
-    expect(pass).to eq(true)
+
+class TestBoard
+  attr_reader :cells
+  def initialize
+    @cells = [1, 2, 3]
   end
 
-  it "displays the welcome message on game start" do
-    game = Game.new(TestDisplay.new, TestPresenter.new)
+  def place_mark(mark, position)
+    @cells[position - 1] = mark
+  end
+end
 
+class TestPlayer
+  def mark
+    "Z"
+  end
+
+  def get_input(display)
+    1
+  end
+end
+
+describe "Game" do
+  subject(:game) { Game.new(TestDisplay.new, TestPresenter.new, TestBoard.new, TestPlayer.new) }
+
+  # before(:each) do
+  #   @game = Game.new(TestDisplay.new, TestPresenter.new, TestBoard.new, TestPlayer.new)
+  # end
+
+  it "displays the welcome message on game start" do
     game.start
 
     expect(game.display.state[0]).to eq("Welcome to Tic Tac Toe!")
   end
 
-  it "it displays the board from the presenter" do
-    game = Game.new(TestDisplay.new, TestPresenter.new)
+  it "plays the game" do
     game.play
-    expect(game.display.state[0]).to eq("______")
+
+    expect(game.display.state).to eq([[1, 2, 3], ["Z", 2, 3]])
   end
 end

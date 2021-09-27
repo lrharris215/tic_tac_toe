@@ -1,14 +1,15 @@
+require_relative "./board"
 class Presenter
-  def print_board
+  def print_board(board)
     "
              |       |
-         1   |   2   |   3
+         #{board.find_position(1)}   |   #{board.find_position(2)}   |   #{board.find_position(3)}
        _____ | _____ | _____
              |       |
-         4   |   5   |   6
+         #{board.find_position(4)}   |   #{board.find_position(5)}   |   #{board.find_position(6)}
        _____ | _____ | _____
              |       |
-         7   |   8   |   9
+         #{board.find_position(7)}   |   #{board.find_position(8)}   |   #{board.find_position(9)}
              |       |
         "
   end
