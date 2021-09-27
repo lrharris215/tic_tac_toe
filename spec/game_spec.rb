@@ -36,8 +36,9 @@ class TestBoard
 end
 
 class TestPlayer
-  def mark
-    "Z"
+  attr_reader :mark
+  def initialize(mark)
+    @mark = mark
   end
 
   def get_input(display)
@@ -46,7 +47,7 @@ class TestPlayer
 end
 
 describe "Game" do
-  subject(:game) { Game.new(TestDisplay.new, TestPresenter.new, TestBoard.new, TestPlayer.new) }
+  subject(:game) { Game.new(TestDisplay.new, TestPresenter.new, TestBoard.new, [TestPlayer.new("Z"), TestPlayer.new("Y")]) }
 
   # before(:each) do
   #   @game = Game.new(TestDisplay.new, TestPresenter.new, TestBoard.new, TestPlayer.new)
