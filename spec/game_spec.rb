@@ -14,22 +14,22 @@ end
 
 class TestPresenter
   def print_board(board)
-    board.board
+    board.cells
   end
 end
 
 class TestBoard
-  attr_reader :board
+  attr_reader :cells
   def initialize
-    @board = [1, 2, 3]
+    @cells = [1, 2, 3]
   end
 
   def []=(num, val)
-    @board[num] = val
+    @cells[num] = val
   end
 
   def place_mark(player, position)
-    @board[position - 1] = player.mark
+    @cells[position - 1] = player.mark
   end
 end
 
