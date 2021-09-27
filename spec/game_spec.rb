@@ -1,5 +1,6 @@
 require "rspec"
 require_relative "../lib/game"
+require_relative "../lib/constants"
 
 class TestDisplay
   attr_reader :state
@@ -9,6 +10,10 @@ class TestDisplay
 
   def output(message)
     @state.push(message)
+  end
+
+  def input
+    1
   end
 end
 
@@ -24,12 +29,8 @@ class TestBoard
     @cells = [1, 2, 3]
   end
 
-  def []=(num, val)
-    @cells[num] = val
-  end
-
-  def place_mark(player, position)
-    @cells[position - 1] = player.mark
+  def place_mark(mark, position)
+    @cells[position - 1] = mark
   end
 end
 
@@ -58,8 +59,14 @@ describe "Game" do
   it "Allows a player to place their mark on the board" do
     player = TestPlayer.new
 
-    @game.board.place_mark(player, 1)
+    @game.board.place_mark(player.mark, 1)
     @game.print_board
     expect(@game.display.state[0][0]).to eq("Z")
   end
+
+  # it "plays the game" do
+
+  #   @game.play
+  #   expect(@game.display.state).to eq([[1,2,3], GET_PLAYER_INPUT, ["X", 2,3]])
+  # end
 end
