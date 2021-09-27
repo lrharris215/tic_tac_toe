@@ -21,7 +21,7 @@ end
 
 class TestPresenter
   def print_board(board)
-    board.cells
+    board.cells.dup
   end
 end
 
@@ -47,31 +47,23 @@ class TestPlayer
 end
 
 describe "Game" do
-  before(:each) do
-    @game = Game.new(TestDisplay.new, TestPresenter.new, TestBoard.new, TestPlayer.new)
-  end
+     
+  subject(:game) { Game.new(TestDisplay.new, TestPresenter.new, TestBoard.new, TestPlayer.new) }
+
+  # before(:each) do
+  #   @game = Game.new(TestDisplay.new, TestPresenter.new, TestBoard.new, TestPlayer.new)
+  # end
 
   it "displays the welcome message on game start" do
-    @game.start
+    game.start
 
-    expect(@game.display.state[0]).to eq("Welcome to Tic Tac Toe!")
+    expect(game.display.state[0]).to eq("Welcome to Tic Tac Toe!")
   end
 
-  # it "it displays the board from the presenter" do
-  #   @game.print_board
-  #   expect(@game.display.state[0]).to eq([1, 2, 3])
-  # end
-
-  # it "Allows a player to place their mark on the board" do
-    
-
-  #   @game.board.place_mark(@game.player_1.mark, 1)
-  #   @game.print_board
-  #   expect(@game.display.state[0][0]).to eq("Z")
-  # end
-
   it "plays the game" do
-    @game.play
-    expect(@game.display.state).to eq([[1,2,3], ["Z", 2,3]])
+   
+    game.play
+    
+    expect(game.display.state).to eq([[1,2,3], ["Z",2,3]])
   end
 end
