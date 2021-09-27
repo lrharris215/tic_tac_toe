@@ -62,6 +62,7 @@ describe "Game" do
   it "plays the game" do
     game.play
 
-    expect(game.display.state).to eq([[1, 2, 3], ["Z", 2, 3]])
+    expect(game.display.state[1]).to eq(["Z", 2, 3])
+    p game.display.state
   end
 end

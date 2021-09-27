@@ -26,6 +26,15 @@ class Game
     print_board
     @board.place_mark(@active_player.mark, @active_player.get_input(@display))
     print_board
+    switch_player
+    @board.place_mark(@active_player.mark, @active_player.get_input(@display))
+    print_board
+  end
+
+  private
+
+  def switch_player
+    @active_player === @player_1 ? @active_player = @player_2 : @active_player = @player_1
   end
 
   def print_board
