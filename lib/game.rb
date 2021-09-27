@@ -14,7 +14,7 @@ class Game
     @player_2 = players[1]
 
     @active_player = @player_1
-    # @game_over = false
+    @game_over = false
   end
 
   def start
@@ -23,12 +23,15 @@ class Game
 
   def play
     # use a while loop later to keep game going
-    print_board
-    @board.place_mark(@active_player.mark, @active_player.get_input(@display))
-    print_board
-    switch_player
-    @board.place_mark(@active_player.mark, @active_player.get_input(@display))
-    print_board
+    while @game_over == false
+      print_board
+      @board.place_mark(@active_player.mark, @active_player.get_input(@display))
+      print_board
+      switch_player
+      @board.place_mark(@active_player.mark, @active_player.get_input(@display))
+      print_board
+      @game_over = true
+    end
   end
 
   private
