@@ -1,3 +1,5 @@
+require_relative "./constants"
+
 class Player
   attr_reader :mark
   def initialize(mark)
@@ -6,7 +8,7 @@ class Player
   end
 
   def get_input(display)
-    display.output("Where would you like to put your mark?")
+    display.output(GET_PLAYER_INPUT)
     display.input
   end
 end

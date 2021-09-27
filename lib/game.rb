@@ -2,6 +2,8 @@ require_relative "./presenter"
 require_relative "./displayer"
 require_relative "./board"
 require_relative "./player"
+require_relative "./constants"
+
 class Game
   attr_reader :display, :board
   def initialize(display, presenter, board)
@@ -15,7 +17,7 @@ class Game
   end
 
   def start
-    @display.output("Welcome to Tic Tac Toe!")
+    @display.output(WELCOME)
   end
 
   def play
