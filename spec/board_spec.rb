@@ -11,7 +11,7 @@ describe "Board" do
       test_player = TestPlayer.new
       board.place_mark(test_player.mark, 1)
 
-      expect(board.board[0]).to eq("Z")
+      expect(board.cells[0]).to eq("Z")
     end
   end
   context "find_position" do

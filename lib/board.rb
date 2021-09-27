@@ -1,16 +1,16 @@
 class Board
-  attr_reader :board
+  attr_reader :cells
 
   def initialize
-    @board = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    @cells = [1, 2, 3, 4, 5, 6, 7, 8, 9]
   end
 
   def find_position(num)
-    @board[num - 1]
+    @cells[num - 1]
   end
 
   def place_mark(mark, position)
     pos = position.to_i - 1
-    @board[pos] = mark
+    @cells[pos] = mark
   end
 end
