@@ -5,12 +5,12 @@ require_relative "./player"
 require_relative "./constants"
 
 class Game
-  attr_reader :display, :board
-  def initialize(display, presenter, board)
+  attr_reader :display, :board, :player_1
+  def initialize(display, presenter, board, player1)
     @display = display
     @presenter = presenter
     @board = board
-    @player_1 = Player.new("X")
+    @player_1 = player1
     # These are for later
     # @player_2 = Player.new("O")
     # @game_over = false

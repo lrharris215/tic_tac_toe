@@ -38,11 +38,15 @@ class TestPlayer
   def mark
     "Z"
   end
+
+  def get_input(display)
+    return 1
+  end
 end
 
 describe "Game" do
   before(:each) do
-    @game = Game.new(TestDisplay.new, TestPresenter.new, TestBoard.new)
+    @game = Game.new(TestDisplay.new, TestPresenter.new, TestBoard.new, TestPlayer.new)
   end
 
   it "displays the welcome message on game start" do
@@ -57,16 +61,16 @@ describe "Game" do
   end
 
   it "Allows a player to place their mark on the board" do
-    player = TestPlayer.new
+    
 
-    @game.board.place_mark(player.mark, 1)
+    @game.board.place_mark(@game.player_1.mark, 1)
     @game.print_board
     expect(@game.display.state[0][0]).to eq("Z")
   end
 
-  # it "plays the game" do
+  it "plays the game" do
 
-  #   @game.play
-  #   expect(@game.display.state).to eq([[1,2,3], GET_PLAYER_INPUT, ["X", 2,3]])
-  # end
+    @game.play
+    expect(@game.display.state).to eq([[1,2,3], ["Z", 2,3]])
+  end
 end
