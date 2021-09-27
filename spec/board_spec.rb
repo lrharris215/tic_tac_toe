@@ -11,7 +11,14 @@ describe "Board" do
       test_player = TestPlayer.new
       board.place_mark(test_player.mark, 1)
 
-      expect(board[0]).to eq("Z")
+      expect(board.board[0]).to eq("Z")
+    end
+  end
+  context "find_position" do
+    it "Returns the correct position in the board array" do
+        board = Board.new
+
+        expect(board.find_position(0)).to eq(1)
     end
   end
 end

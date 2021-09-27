@@ -3,13 +3,13 @@ class Presenter
   def print_board(board)
     "
              |       |
-         #{board[0]}   |   #{board[1]}   |   #{board[2]}
+         #{board.find_position(0)}   |   #{board.find_position(1)}   |   #{board.find_position(2)}
        _____ | _____ | _____
              |       |
-         #{board[3]}   |   #{board[4]}   |   #{board[5]}
+         #{board.find_position(3)}   |   #{board.find_position(4)}   |   #{board.find_position(5)}
        _____ | _____ | _____
              |       |
-         #{board[6]}   |   #{board[7]}   |   #{board[8]}
+         #{board.find_position(6)}   |   #{board.find_position(7)}   |   #{board.find_position(8)}
              |       |
         "
   end
