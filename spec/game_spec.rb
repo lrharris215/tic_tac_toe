@@ -1,8 +1,7 @@
 require "rspec"
-require_relative "./spec_helper.rb"
+require_relative "./spec_helper"
 require_relative "../lib/game"
 require_relative "../lib/constants"
-
 
 class TestDisplay
   attr_reader :state
@@ -42,12 +41,11 @@ class TestPlayer
   end
 
   def get_input(display)
-    return 1
+    1
   end
 end
 
 describe "Game" do
-     
   subject(:game) { Game.new(TestDisplay.new, TestPresenter.new, TestBoard.new, TestPlayer.new) }
 
   # before(:each) do
@@ -61,9 +59,8 @@ describe "Game" do
   end
 
   it "plays the game" do
-   
     game.play
-    
-    expect(game.display.state).to eq([[1,2,3], ["Z",2,3]])
+
+    expect(game.display.state).to eq([[1, 2, 3], ["Z", 2, 3]])
   end
 end
