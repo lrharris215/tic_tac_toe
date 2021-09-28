@@ -29,6 +29,14 @@ class Board
 
   def return_col(number)
     #returns the values of the col (1, 2, 3) left to right
+    case number
+    when 1
+        col = [find_position(1), find_position(4), find_position(7)]
+    when 2
+        col = [find_position(2), find_position(5), find_position(8)]
+    when 3
+        col = [find_position(3), find_position(6), find_position(9)]
+    end
   end
 
   def return_diagonal(side)

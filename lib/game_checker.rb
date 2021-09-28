@@ -35,7 +35,14 @@ class GameChecker
     end
 
     def vertical_winner?(board, player)
-
+        if board.return_col(1).all?(player.mark)
+        return true
+      elsif board.return_col(2).all?(player.mark)
+        return true
+      elsif board.return_col(3).all?(player.mark)
+        return true
+      else return false
+      end
     end
 
     def diagonal_winner?(board, player)
