@@ -39,15 +39,8 @@ describe "GameChecker" do
       test_player1 = TestPlayer.new("Z")
       test_player2 = TestPlayer.new("Y")
       checker = GameChecker.new
-      board.place_mark(test_player1.mark, 1)
-      board.place_mark(test_player2.mark, 2)
-      board.place_mark(test_player1.mark, 3)
-      board.place_mark(test_player2.mark, 4)
-      board.place_mark(test_player1.mark, 5)
-      board.place_mark(test_player2.mark, 6)
-      board.place_mark(test_player2.mark, 7)
-      board.place_mark(test_player1.mark, 8)
-      board.place_mark(test_player2.mark, 9)
+
+      board.fill_for_tie(test_player1.mark, test_player2.mark)
 
       expect(checker.tie?(board, test_player1, test_player2)).to be(true)
     end

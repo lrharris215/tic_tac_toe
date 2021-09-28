@@ -25,15 +25,7 @@ describe "Board" do
       expect(board.full?).to be(false)
     end
     it "returns true if the board is full" do
-      board.place_mark(test_player1.mark, 1)
-      board.place_mark(test_player2.mark, 2)
-      board.place_mark(test_player1.mark, 3)
-      board.place_mark(test_player2.mark, 4)
-      board.place_mark(test_player1.mark, 5)
-      board.place_mark(test_player2.mark, 6)
-      board.place_mark(test_player2.mark, 7)
-      board.place_mark(test_player1.mark, 8)
-      board.place_mark(test_player2.mark, 9)
+      board.fill_for_tie(test_player1.mark, test_player2.mark)
 
       expect(board.full?).to be(true)
     end
