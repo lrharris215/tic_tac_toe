@@ -1,11 +1,9 @@
 class GameChecker
   def winner?(board, player)
-    # takes in a board and a player, determines if that player has won
     horizontal_winner?(board, player) || vertical_winner?(board, player) || diagonal_winner?(board, player)
   end
 
   def tie?(board, player1, player2)
-    # takes in a board, determines if there is a tie
     board.full? && !winner?(board, player1) && !winner?(board, player2)
   end
 

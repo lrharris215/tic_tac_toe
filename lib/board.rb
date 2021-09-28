@@ -41,7 +41,7 @@ class Board
   end
 
   def find_diagonal(side)
-    # takes in either "left" or "right". returns the diaganol values
+    # takes in either "left" or "right". returns the diagonal values
     case side
     when "left"
       diag = [find_position(1), find_position(5), find_position(9)]
@@ -52,7 +52,6 @@ class Board
   end
 
   def full?
-    # returns true if all spaces have been filled with marks
     @cells.each_with_index do |cell, idx|
       if cell.to_i === idx + 1
         return false
