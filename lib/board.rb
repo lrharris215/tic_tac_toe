@@ -14,7 +14,7 @@ class Board
     @cells[pos] = mark
   end
 
-  def return_row(number)
+  def find_row(number)
     #returns the entire "row" (1, 2, 3) top to bottom
     case number
     when 1
@@ -27,7 +27,7 @@ class Board
     return row
   end
 
-  def return_col(number)
+  def find_col(number)
     #returns the values of the col (1, 2, 3) left to right
     case number
     when 1
@@ -40,7 +40,7 @@ class Board
     return col
   end
 
-  def return_diagonal(side)
+  def find_diagonal(side)
     #takes in either "left" or "right". returns the diaganol values
     case side
     when "left"

@@ -24,31 +24,31 @@ class GameChecker
     private
     def horizontal_winner?(board, player)
 
-      if board.return_row(1).all?(player.mark)
+      if board.find_row(1).all?(player.mark)
         return true
-      elsif board.return_row(2).all?(player.mark)
+      elsif board.find_row(2).all?(player.mark)
         return true
-      elsif board.return_row(3).all?(player.mark)
+      elsif board.find_row(3).all?(player.mark)
         return true
       else return false
       end
     end
 
     def vertical_winner?(board, player)
-        if board.return_col(1).all?(player.mark)
+        if board.find_col(1).all?(player.mark)
         return true
-      elsif board.return_col(2).all?(player.mark)
+      elsif board.find_col(2).all?(player.mark)
         return true
-      elsif board.return_col(3).all?(player.mark)
+      elsif board.find_col(3).all?(player.mark)
         return true
       else return false
       end
     end
 
     def diagonal_winner?(board, player)
-        if board.return_diagonal("left").all?(player.mark)
+        if board.find_diagonal("left").all?(player.mark)
             return true
-        elsif board.return_diagonal("right").all?(player.mark)
+        elsif board.find_diagonal("right").all?(player.mark)
             returnt true
         else
             return false
