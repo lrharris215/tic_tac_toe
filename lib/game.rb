@@ -14,10 +14,8 @@ class Game
     @player_1 = players[0]
     @player_2 = players[1]
 
-
-    @game_checker = GameChecker.new()
+    @game_checker = GameChecker.new
     @active_player = @player_1
-    @game_over = false
   end
 
   def start

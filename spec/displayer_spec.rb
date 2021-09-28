@@ -14,8 +14,7 @@ class TestInputFunction
 end
 
 describe "Displayer" do
-
-    subject(:display) { Displayer.new(TestOutputFunction.new, TestInputFunction.new) }
+  subject(:display) { Displayer.new(TestOutputFunction.new, TestInputFunction.new) }
 
   it "applies the output function to the message" do
     expect(display.output("message")).to eq("message")
