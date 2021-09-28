@@ -37,7 +37,7 @@ class Game
   private
 
   def switch_player
-    @active_player === @player_1 ? @active_player = @player_2 : @active_player = @player_1
+    @active_player = @active_player === @player_1 ? @player_2 : @player_1
   end
 
   def print_board
