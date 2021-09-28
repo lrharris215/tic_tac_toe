@@ -13,4 +13,16 @@ class Board
     pos = position.to_i - 1
     @cells[pos] = mark
   end
+
+  def return_row(number)
+    #returns the entire "row" (1, 2, 3) top to bottom
+  end
+
+  def return_col(number)
+    #returns the values of the col (1, 2, 3) left to right
+  end
+
+  def return_diagonal(side)
+    #takes in either "left" or "right". returns the diaganol values
+  end
 end

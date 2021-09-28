@@ -3,6 +3,7 @@ require_relative "./displayer"
 require_relative "./board"
 require_relative "./player"
 require_relative "./constants"
+require_relative "./game_checker"
 
 class Game
   attr_reader :display, :board, :player_1
@@ -13,6 +14,8 @@ class Game
     @player_1 = players[0]
     @player_2 = players[1]
 
+
+    @game_checker = GameChecker.new()
     @active_player = @player_1
     @game_over = false
   end
