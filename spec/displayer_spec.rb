@@ -16,11 +16,11 @@ end
 describe "Displayer" do
   subject(:display) { Displayer.new(TestOutputFunction.new, TestInputFunction.new) }
 
-  it "applies the output function to the message" do
+  it "Outputs the given message" do
     expect(display.output("message")).to eq("message")
   end
 
-  it "applies the input function to receive player input" do
+  it "receives input" do
     expect(display.input).to eq("hello")
   end
 end

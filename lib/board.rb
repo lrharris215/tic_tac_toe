@@ -10,8 +10,8 @@ class Board
   end
 
   def place_mark(mark, position)
-    pos = position.to_i - 1
-    @cells[pos] = mark
+    cell_location = position.to_i - 1
+    @cells[cell_location] = mark
   end
 
     def full?
