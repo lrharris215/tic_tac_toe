@@ -25,4 +25,14 @@ class Board
   def return_diagonal(side)
     #takes in either "left" or "right". returns the diaganol values
   end
+
+  def full? 
+    #returns true if all spaces have been filled with marks
+    @cells.each_with_index do |cell, idx|
+        if cell.to_i === idx + 1
+            return false
+        end
+    end
+    return true
+  end
 end

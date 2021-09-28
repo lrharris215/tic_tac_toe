@@ -54,7 +54,7 @@ describe "GameChecker" do
         board.place_mark(test_player1.mark, 8)
         board.place_mark(test_player2.mark, 9)
 
-        expect(checker.tie?(board)).to be(true)
+        expect(checker.tie?(board, test_player1, test_player2)).to be(true)
 
     end
   end
