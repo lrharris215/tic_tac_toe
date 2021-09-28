@@ -1,14 +1,10 @@
 require_relative "../lib/board"
-class TestPlayer
-  def mark
-    "Z"
-  end
-end
+
 describe "Board" do
   context "place_mark" do
     it "Places the correct mark in the correct position" do
       board = Board.new
-      test_player = TestPlayer.new
+      test_player = TestPlayer.new("Z")
       board.place_mark(test_player.mark, 1)
 
       expect(board.cells[0]).to eq("Z")

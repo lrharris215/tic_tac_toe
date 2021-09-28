@@ -36,8 +36,9 @@ class TestBoard
 end
 
 class TestPlayer
-  def mark
-    "Z"
+  attr_reader :mark
+  def initialize(mark)
+    @mark = mark
   end
 
   def get_input(display)
@@ -46,11 +47,7 @@ class TestPlayer
 end
 
 describe "Game" do
-  subject(:game) { Game.new(TestDisplay.new, TestPresenter.new, TestBoard.new, TestPlayer.new) }
-
-  # before(:each) do
-  #   @game = Game.new(TestDisplay.new, TestPresenter.new, TestBoard.new, TestPlayer.new)
-  # end
+  subject(:game) { Game.new(TestDisplay.new, TestPresenter.new, TestBoard.new, [TestPlayer.new("Z"), TestPlayer.new("Y")]) }
 
   it "displays the welcome message on game start" do
     game.start
@@ -61,6 +58,11 @@ describe "Game" do
   it "plays the game" do
     game.play
 
-    expect(game.display.state).to eq([[1, 2, 3], ["Z", 2, 3]])
+    expect(game.display.state[1]).to eq(["Z", 2, 3])
+  end
+
+  it "Switches players" do
+    game.play
+    expect(game.display.state[2]).to eq(["Y", 2, 3])
   end
 end

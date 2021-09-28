@@ -8,6 +8,7 @@ class Player
   end
 
   def get_input(display)
+    display.output("It is Player #{@mark}'s turn!")
     display.output(GET_PLAYER_INPUT)
     display.input
   end
