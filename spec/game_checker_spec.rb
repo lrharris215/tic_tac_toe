@@ -9,9 +9,8 @@ describe "GameChecker" do
       board = Board.new
       test_player = TestPlayer.new("Z")
       checker = GameChecker.new
-      board.place_mark(test_player.mark, 1)
-      board.place_mark(test_player.mark, 2)
-      board.place_mark(test_player.mark, 3)
+    
+      board.fill_row(test_player.mark, 1)
 
       expect(checker.winner?(board, test_player)).to be(true)
     end
@@ -20,9 +19,7 @@ describe "GameChecker" do
       board = Board.new
       test_player = TestPlayer.new("Z")
       checker = GameChecker.new
-      board.place_mark(test_player.mark, 1)
-      board.place_mark(test_player.mark, 4)
-      board.place_mark(test_player.mark, 7)
+      board.fill_col(test_player.mark, 1)
 
       expect(checker.winner?(board, test_player)).to be(true)
     end
@@ -31,9 +28,7 @@ describe "GameChecker" do
       board = Board.new
       test_player = TestPlayer.new("Z")
       checker = GameChecker.new
-      board.place_mark(test_player.mark, 1)
-      board.place_mark(test_player.mark, 5)
-      board.place_mark(test_player.mark, 9)
+      board.fill_diagonal(test_player.mark, "left")
 
       expect(checker.winner?(board, test_player)).to be(true)
     end

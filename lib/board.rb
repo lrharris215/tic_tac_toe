@@ -35,6 +35,53 @@ class Board
     find_diagonal("left").all?(mark) || find_diagonal("right").all?(mark)
   end
   
+  def fill_row(mark, row_num)
+    case row_num
+    when 1
+        place_mark(mark, 1)
+        place_mark(mark, 2)
+        place_mark(mark, 3)
+    when 2
+        place_mark(mark, 4)
+        place_mark(mark, 5)
+        place_mark(mark, 6)
+    when 3
+        place_mark(mark, 7)
+        place_mark(mark, 8)
+        place_mark(mark, 9)
+    end
+  end
+
+  def fill_col(mark, col_num)
+    case col_num
+    when 1
+        place_mark(mark, 1)
+        place_mark(mark, 4)
+        place_mark(mark, 7)
+    when 2
+        place_mark(mark, 2)
+        place_mark(mark, 5)
+        place_mark(mark, 8)
+    when 3
+        place_mark(mark, 3)
+        place_mark(mark, 6)
+        place_mark(mark, 9)
+    end
+    
+  end
+
+  def fill_diagonal(mark, side)
+    case side
+    when "left"
+        place_mark(mark, 1)
+        place_mark(mark, 5)
+        place_mark(mark, 9)
+    when "right"
+        place_mark(mark, 3)
+        place_mark(mark, 5)
+        place_mark(mark, 7)
+    end
+  end
   private
 
   def find_row(number)
