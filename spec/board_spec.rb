@@ -2,10 +2,10 @@ require_relative "../lib/board"
 
 describe "Board" do
   subject(:board) { Board.new }
- 
+
   let(:test_player1) { TestPlayer.new("Z") }
   let(:test_player2) { TestPlayer.new("Y") }
-  
+
   context "place_mark" do
     it "Places the correct mark in the correct position" do
       board.place_mark(test_player1.mark, 1)

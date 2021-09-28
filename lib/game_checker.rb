@@ -10,14 +10,14 @@ class GameChecker
   private
 
   def horizontal_winner?(board, player)
-    board.find_row(1).all?(player.mark) || board.find_row(2).all?(player.mark) || board.find_row(3).all?(player.mark)
+    board.row_full?(player.mark)
   end
 
   def vertical_winner?(board, player)
-    board.find_col(1).all?(player.mark) || board.find_col(2).all?(player.mark) || board.find_col(3).all?(player.mark)
+    board.col_full?(player.mark)
   end
 
   def diagonal_winner?(board, player)
-    board.find_diagonal("left").all?(player.mark) || board.find_diagonal("right").all?(player.mark)
+    board.diagonal_full?(player.mark)
   end
 end

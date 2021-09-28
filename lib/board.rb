@@ -14,6 +14,29 @@ class Board
     @cells[pos] = mark
   end
 
+    def full?
+    @cells.each_with_index do |cell, idx|
+      if cell.to_i === idx + 1
+        return false
+      end
+    end
+    true
+  end
+
+  def row_full?(mark)
+    find_row(1).all?(mark) || find_row(2).all?(mark) || find_row(3).all?(mark)
+  end
+
+  def col_full?(mark)
+    find_col(1).all?(mark) || find_col(2).all?(mark) || find_col(3).all?(mark)
+  end
+
+  def diagonal_full?(mark)
+    find_diagonal("left").all?(mark) || find_diagonal("right").all?(mark)
+  end
+  
+  private
+
   def find_row(number)
     # returns the entire "row" (1, 2, 3) top to bottom
     case number
@@ -49,14 +72,5 @@ class Board
       diag = [find_position(3), find_position(5), find_position(7)]
     end
     diag
-  end
-
-  def full?
-    @cells.each_with_index do |cell, idx|
-      if cell.to_i === idx + 1
-        return false
-      end
-    end
-    true
   end
 end
