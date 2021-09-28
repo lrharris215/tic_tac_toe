@@ -14,7 +14,7 @@ class Game
     @player_2 = players[1]
 
     @active_player = @player_1
-    # @game_over = false
+    @game_over = false
   end
 
   def start
