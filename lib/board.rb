@@ -16,6 +16,15 @@ class Board
 
   def return_row(number)
     #returns the entire "row" (1, 2, 3) top to bottom
+    case number
+    when 1
+        row = [find_position(1), find_position(2), find_position(3)]
+    when 2
+        row = [find_position(4), find_position(5), find_position(6)]
+    when 3
+        row = [find_position(7), find_position(8), find_position(9)]
+    end
+    return row
   end
 
   def return_col(number)
