@@ -37,10 +37,18 @@ class Board
     when 3
         col = [find_position(3), find_position(6), find_position(9)]
     end
+    return col
   end
 
   def return_diagonal(side)
     #takes in either "left" or "right". returns the diaganol values
+    case side
+    when "left"
+        diag = [find_position(1), find_position(5), find_position(9)]
+    when "right"
+        diag = [find_position(3), find_position(5), find_position(7)]
+    end
+    return diag
   end
 
   def full? 

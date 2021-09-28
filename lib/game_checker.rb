@@ -46,7 +46,13 @@ class GameChecker
     end
 
     def diagonal_winner?(board, player)
-
+        if board.return_diagonal("left").all?(player.mark)
+            return true
+        elsif board.return_diagonal("right").all?(player.mark)
+            returnt true
+        else
+            return false
+        end
     end
 
 end
