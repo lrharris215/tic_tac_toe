@@ -49,10 +49,6 @@ end
 describe "Game" do
   subject(:game) { Game.new(TestDisplay.new, TestPresenter.new, TestBoard.new, [TestPlayer.new("Z"), TestPlayer.new("Y")]) }
 
-  # before(:each) do
-  #   @game = Game.new(TestDisplay.new, TestPresenter.new, TestBoard.new, TestPlayer.new)
-  # end
-
   it "displays the welcome message on game start" do
     game.start
 
@@ -63,6 +59,10 @@ describe "Game" do
     game.play
 
     expect(game.display.state[1]).to eq(["Z", 2, 3])
-    p game.display.state
+  end
+
+  it "Switches players" do
+    game.play
+    expect(game.display.state[2]).to eq(["Y", 2, 3])
   end
 end
