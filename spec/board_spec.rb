@@ -1,7 +1,7 @@
 require_relative "../lib/board"
 
 describe "Board" do
-  let(:game_checker){GameChecker.new}
+  let(:game_checker) { GameChecker.new }
   subject(:board) { Board.new(game_checker) }
 
   let(:test_player1) { TestPlayer.new("Z") }

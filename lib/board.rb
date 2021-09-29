@@ -1,5 +1,5 @@
 class Board
-  attr_reader :cells
+  attr_reader :cells, :game_checker
 
   def initialize(game_checker)
     @cells = [1, 2, 3, 4, 5, 6, 7, 8, 9]
