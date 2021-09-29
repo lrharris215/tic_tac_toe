@@ -15,8 +15,8 @@ class Board
     @cells[cell_location] = mark
   end
 
-  def won?(player)
-    @game_checker.winner?(self, player)
+  def won?(player1, player2)
+    @game_checker.winner?(self, player1) || @game_checker.winner?(self, player2)
   end
 
   def tie?(player1, player2)
