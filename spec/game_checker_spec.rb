@@ -9,7 +9,7 @@ describe "GameChecker" do
       board = Board.new
       test_player = TestPlayer.new("Z")
       checker = GameChecker.new
-    
+
       board.fill_row(test_player.mark, 1)
 
       expect(checker.winner?(board, test_player)).to be(true)

@@ -20,7 +20,7 @@ describe "Displayer" do
     expect(display.output("message")).to eq("message")
   end
 
-  it "receives input" do
+  it "Receives input" do
     expect(display.input).to eq("hello")
   end
 end
