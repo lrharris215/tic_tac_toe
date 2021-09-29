@@ -1,6 +1,7 @@
 require_relative "./lib/game"
 
-board = Board.new
+game_checker = GameChecker.new()
+board = Board.new(game_checker)
 presenter = Presenter.new
 displayer = Displayer.new($stdout, $stdin)
 players = [Player.new("X"), Player.new("O")]
