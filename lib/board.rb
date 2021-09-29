@@ -62,65 +62,6 @@ class Board
     false
   end
 
-  def fill_row(mark, row_num)
-    case row_num
-    when 1
-      place_mark(mark, 1)
-      place_mark(mark, 2)
-      place_mark(mark, 3)
-    when 2
-      place_mark(mark, 4)
-      place_mark(mark, 5)
-      place_mark(mark, 6)
-    when 3
-      place_mark(mark, 7)
-      place_mark(mark, 8)
-      place_mark(mark, 9)
-    end
-  end
-
-  def fill_col(mark, col_num)
-    case col_num
-    when 1
-      place_mark(mark, 1)
-      place_mark(mark, 4)
-      place_mark(mark, 7)
-    when 2
-      place_mark(mark, 2)
-      place_mark(mark, 5)
-      place_mark(mark, 8)
-    when 3
-      place_mark(mark, 3)
-      place_mark(mark, 6)
-      place_mark(mark, 9)
-    end
-  end
-
-  def fill_diagonal(mark, side)
-    case side
-    when "left"
-      place_mark(mark, 1)
-      place_mark(mark, 5)
-      place_mark(mark, 9)
-    when "right"
-      place_mark(mark, 3)
-      place_mark(mark, 5)
-      place_mark(mark, 7)
-    end
-  end
-
-  def fill_for_tie(mark1, mark2)
-    place_mark(mark1, 1)
-    place_mark(mark2, 2)
-    place_mark(mark1, 3)
-    place_mark(mark2, 4)
-    place_mark(mark1, 5)
-    place_mark(mark2, 6)
-    place_mark(mark2, 7)
-    place_mark(mark1, 8)
-    place_mark(mark2, 9)
-  end
-
   private
 
   def find_rows
