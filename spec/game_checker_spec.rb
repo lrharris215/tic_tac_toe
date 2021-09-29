@@ -20,7 +20,7 @@ describe "GameChecker" do
     board.place_mark(mark, 5)
     board.place_mark(mark, 8)
   end
-  
+
   def set_diag_winner(mark)
     board.place_mark(mark, 1)
     board.place_mark(mark, 5)

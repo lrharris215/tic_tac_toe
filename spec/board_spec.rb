@@ -6,24 +6,11 @@ describe "Board" do
 
   let(:test_player1) { TestPlayer.new("Z") }
   let(:test_player2) { TestPlayer.new("Y") }
-  
 
   def set_row_winner(mark)
     board.place_mark(mark, 1)
     board.place_mark(mark, 2)
     board.place_mark(mark, 3)
-  end
-
-  def set_col_winner(mark)
-    board.place_mark(mark, 2)
-    board.place_mark(mark, 5)
-    board.place_mark(mark, 8)
-  end
-
-  def set_diag_winner(mark)
-    board.place_mark(mark, 1)
-    board.place_mark(mark, 5)
-    board.place_mark(mark, 9)
   end
 
   def set_tie(mark1, mark2)
@@ -38,7 +25,6 @@ describe "Board" do
     board.place_mark(mark2, 9)
   end
 
-  
   context "place_mark" do
     it "Places the correct mark in the correct position" do
       board.place_mark(test_player1.mark, 1)
