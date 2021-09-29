@@ -31,4 +31,24 @@ describe "Board" do
       expect(board.full?).to be(true)
     end
   end
+  context "won?" do
+    it "Returns true if a player has won the game" do
+      board.fill_row(test_player1.mark, 1)
+      expect(board.won?(test_player1)).to be(true)
+    end
+
+    it "Returns false if a player has not won the game" do 
+        board.fill_for_tie(test_player1.mark, test_player2.mark)
+
+        expect(board.won?(test_player2)).to be(false)
+    end
+  end
+
+  context "tie?" do
+    it "Returns true if the game is tied" do 
+        board.fill_for_tie(test_player1.mark, test_player2.mark)
+
+        expect(board.tie?(test_player1, test_player2)).to be(true)
+    end
+  end
 end

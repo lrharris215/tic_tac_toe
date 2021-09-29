@@ -15,6 +15,14 @@ class Board
     @cells[cell_location] = mark
   end
 
+  def won?(player)
+    @game_checker.winner?(self, player)
+  end
+
+  def tie?(player1, player2)
+    @game_checker.tie?(self, player1, player2)
+  end
+
   def full?
     @cells.each_with_index do |cell, idx|
       if cell.to_i === idx + 1
