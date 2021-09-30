@@ -3,60 +3,45 @@ require "rspec"
 require_relative "../lib/game_checker"
 require_relative "../lib/board"
 
+class TestBoard
+    def row_full?(mark)
+        return false
+    end
+
+    def col_full?(mark)
+        return false
+    end
+
+    def diagonal_full?(mark)
+        return false
+    end
+end
 describe "GameChecker" do
   subject(:checker) { GameChecker.new }
-  let(:board) { Board.new(checker) }
+  let(:board) { TestBoard.new }
   let(:player1) { TestPlayer.new("Z") }
   let(:player2) { TestPlayer.new("Y") }
 
-  def set_row_winner(mark)
-    [1, 2, 3].each do |position|
-      board.place_mark(mark, position)
-    end
-  end
-
-  def set_col_winner(mark)
-    [2, 5, 8].each do |position|
-      board.place_mark(mark, position)
-    end
-  end
-
-  def set_diag_winner(mark)
-    [1, 5, 9].each do |position|
-      board.place_mark(mark, position)
-    end
-  end
-
-  def set_tie(mark1, mark2)
-    [1, 3, 5, 8].each do |position|
-      board.place_mark(mark1, position)
-    end
-    [2, 4, 6, 7, 9].each do |position|
-      board.place_mark(mark2, position)
-    end
-  end
-
   context "winner?" do
     it "Returns true if the game has been won horizontally" do
-      set_row_winner(player1.mark)
-
+   
+      allow(board).to receive(:row_full?).and_return(true)
       expect(checker.winner?(board, player1)).to be(true)
     end
 
     it "Returns true if the game has been won vertically" do
-      set_col_winner(player1.mark)
-
+  
+      allow(board).to receive(:col_full?).and_return(true)
       expect(checker.winner?(board, player1)).to be(true)
     end
 
     it "Returns true if the game has been won diagonally" do
-      set_diag_winner(player1.mark)
 
+      allow(board).to receive(:diagonal_full?).and_return(true)
       expect(checker.winner?(board, player1)).to be(true)
     end
 
     it "Returns false if the player has not won the game" do
-      set_tie(player1.mark, player2.mark)
 
       expect(checker.winner?(board, player1)).to be(false)
     end
@@ -64,8 +49,8 @@ describe "GameChecker" do
 
   context "tie?" do
     it "Returns true if all the spaces are filled without a winner" do
-      set_tie(player1.mark, player2.mark)
-
+      
+      allow(board).to receive(:full?).and_return(true)
       expect(checker.tie?(board, player1, player2)).to be(true)
     end
   end
