@@ -48,7 +48,7 @@ end
 
 class TestChecker
   def game_over?(board, player_1, player_2)
-    return true
+    true
   end
 end
 
@@ -68,22 +68,23 @@ describe "Game" do
   it "displays the welcome message on game start" do
     game.start
 
-    expect(game.display.state[0]).to eq("Welcome to Tic Tac Toe!")
+    expect(game.display.state[0]).to eq(WELCOME)
   end
 
   it "plays the game" do
-    p game.player_1
-    p game.active_player
-
     game.play
-    p game.display.state
+
     expect(game.display.state[0]).to eq(["Z", 2, 3])
   end
 
   it "Switches players" do
-    
     game.switch_player
 
     expect(game.active_player).to eq(game.player_2)
+  end
+
+  it "Displays the game over message on game end" do
+    game.game_over
+    expect(game.display.state[0]).to eq(GAME_OVER)
   end
 end
