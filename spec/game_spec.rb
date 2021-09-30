@@ -81,7 +81,9 @@ describe "Game" do
   end
 
   it "Switches players" do
-    game.play
-    expect(game.display.state[2]).to eq(["Y", 2, 3])
+    
+    game.switch_player
+
+    expect(game.active_player).to eq(game.player_2)
   end
 end
