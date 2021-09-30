@@ -72,10 +72,12 @@ describe "Game" do
   end
 
   it "plays the game" do
-    p @active_player
+    p game.player_1
+    p game.active_player
+
     game.play
-    
-    expect(game.display.state[1]).to eq(["Z", 2, 3])
+    p game.display.state
+    expect(game.display.state[0]).to eq(["Z", 2, 3])
   end
 
   it "Switches players" do
