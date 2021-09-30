@@ -1,28 +1,34 @@
 require_relative "../lib/board"
 
+class TestChecker
+    def winner?(board, player)
+        return true
+    end
+
+    def tie?(board, player1, player2)
+        return true
+    end
+end
 describe "Board" do
-  let(:game_checker) { GameChecker.new }
+  let(:game_checker) { TestChecker.new }
   subject(:board) { Board.new(game_checker) }
 
   let(:test_player1) { TestPlayer.new("Z") }
   let(:test_player2) { TestPlayer.new("Y") }
 
-  def set_row_winner(mark)
-    board.place_mark(mark, 1)
-    board.place_mark(mark, 2)
-    board.place_mark(mark, 3)
+   def set_row_winner(mark)
+    [1,2,3].each do |position|
+        board.place_mark(mark, position)
+    end
   end
 
   def set_tie(mark1, mark2)
-    board.place_mark(mark1, 1)
-    board.place_mark(mark2, 2)
-    board.place_mark(mark1, 3)
-    board.place_mark(mark2, 4)
-    board.place_mark(mark1, 5)
-    board.place_mark(mark2, 6)
-    board.place_mark(mark2, 7)
-    board.place_mark(mark1, 8)
-    board.place_mark(mark2, 9)
+    [1,3,5,8].each do |position|
+        board.place_mark(mark1, position)
+    end
+    [2,4,6,7,9].each do |position|
+        board.place_mark(mark2, position)
+    end
   end
 
   context "place_mark" do
