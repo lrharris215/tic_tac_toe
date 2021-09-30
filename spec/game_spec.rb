@@ -46,14 +46,21 @@ class TestPlayer
   end
 end
 
+class TestChecker
+  def game_over?(board, player_1, player_2)
+    return true
+  end
+end
+
 describe "Game" do
   let(:config_object) {
     {
       display: TestDisplay.new,
       presenter: TestPresenter.new,
       board: TestBoard.new,
-      player1: TestPlayer.new("Z"),
-      player2: TestPlayer.new("Y")
+      game_checker: TestChecker.new,
+      player_1: TestPlayer.new("Z"),
+      player_2: TestPlayer.new("Y")
     }
   }
   subject(:game) { Game.new(config_object) }
@@ -65,8 +72,9 @@ describe "Game" do
   end
 
   it "plays the game" do
+    p @active_player
     game.play
-
+    
     expect(game.display.state[1]).to eq(["Z", 2, 3])
   end
 

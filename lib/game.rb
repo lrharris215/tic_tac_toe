@@ -6,15 +6,17 @@ require_relative "./constants"
 require_relative "./game_checker"
 
 class Game
-  attr_reader :display, :board, :player_1
+  attr_reader :display, :board, :player_1, :player_2
   def initialize(config_object)
     @display = config_object[:display]
     @presenter = config_object[:presenter]
     @board = config_object[:board]
-    @player_1 = config_object[:player1]
-    @player_2 = config_object[:player2]
+    @player_1 = config_object[:player_1]
+    @player_2 = config_object[:player_2]
+    @game_checker = config_object[:game_checker]
 
     @active_player = @player_1
+    @game_over = false
   end
 
   def start
@@ -22,11 +24,22 @@ class Game
   end
 
   def play
-    print_board
-    @board.place_mark(@player_1.mark, @player_1.get_input(@display))
-    print_board
-    @board.place_mark(@player_2.mark, @player_2.get_input(@display))
-    print_board
+
+    while !@game_over
+
+      print_board
+      @board.place_mark(@active_player.mark, @active_player.get_input(@display))
+
+      if(@game_checker.game_over?(@board, @player_1, @player_2))
+        @game_over = true
+      else
+        switch_player
+      end
+    end
+  end
+
+  def switch_player
+    @active_player = @active_player == @player_1 ? @player_2 : @player_1
   end
 
   private

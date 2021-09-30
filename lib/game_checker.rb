@@ -7,6 +7,10 @@ class GameChecker
     board.full? && !winner?(board, player1) && !winner?(board, player2)
   end
 
+  def game_over?(board, player1, player2)
+    winner?(board, player1) || winner?(board, player2) || tie?(board, player1, player2)
+  end
+
   private
 
   def horizontal_winner?(board, player)

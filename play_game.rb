@@ -6,8 +6,8 @@ config_object = {
     presenter: Presenter.new,
     board: Board.new,
     game_checker: GameChecker.new,
-    player1: Player.new("X"),
-    player2: Player.new("O")
+    player_1: Player.new("X"),
+    player_2: Player.new("O")
 
 }
 game = Game.new(config_object)

@@ -49,4 +49,18 @@ describe "GameChecker" do
       expect(checker.tie?(board, player1, player2)).to be(true)
     end
   end
+
+  context "game_over?" do 
+    it "Returns true if the game has been won" do
+        allow(checker).to receive(:winner?).and_return(true)
+
+        expect(checker.game_over?(board, player1, player2)).to be(true)
+    end
+
+    it "Returns true if the game is a tie" do 
+        allow(checker).to receive(:tie?).and_return(true)
+
+        expect(checker.game_over?(board, player1, player2)).to be(true)
+    end
+  end
 end
