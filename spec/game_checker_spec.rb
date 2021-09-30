@@ -40,19 +40,25 @@ describe "GameChecker" do
     it "Returns true if the game has been won horizontally" do
       set_row_winner(player1.mark)
 
-      expect(board.game_checker.winner?(board, player1)).to be(true)
+      expect(checker.winner?(board, player1)).to be(true)
     end
 
     it "Returns true if the game has been won vertically" do
       set_col_winner(player1.mark)
 
-      expect(board.game_checker.winner?(board, player1)).to be(true)
+      expect(checker.winner?(board, player1)).to be(true)
     end
 
     it "Returns true if the game has been won diagonally" do
       set_diag_winner(player1.mark)
 
-      expect(board.game_checker.winner?(board, player1)).to be(true)
+      expect(checker.winner?(board, player1)).to be(true)
+    end
+
+    it "Returns false if the player has not won the game" do 
+        set_tie(player1.mark, player2.mark)
+
+        expect(checker.winner?(board, player1)).to be(false)
     end
   end
 
@@ -60,7 +66,7 @@ describe "GameChecker" do
     it "Returns true if all the spaces are filled without a winner" do
       set_tie(player1.mark, player2.mark)
 
-      expect(board.game_checker.tie?(board, player1, player2)).to be(true)
+      expect(checker.tie?(board, player1, player2)).to be(true)
     end
   end
 end

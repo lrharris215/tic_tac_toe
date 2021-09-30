@@ -9,6 +9,7 @@ class TestChecker
         return true
     end
 end
+
 describe "Board" do
   let(:game_checker) { TestChecker.new }
   subject(:board) { Board.new(game_checker) }
@@ -18,6 +19,18 @@ describe "Board" do
 
    def set_row_winner(mark)
     [1,2,3].each do |position|
+        board.place_mark(mark, position)
+    end
+  end
+
+  def set_col_winner(mark)
+    [2,5,8].each do |position|
+        board.place_mark(mark, position)
+    end
+  end
+
+  def set_diag_winner(mark)
+    [1,5,9].each do |position|
         board.place_mark(mark, position)
     end
   end
@@ -55,24 +68,46 @@ describe "Board" do
       expect(board.full?).to be(true)
     end
   end
-  context "won?" do
-    it "Returns true if a player has won the game" do
-      set_row_winner(test_player1.mark)
-      expect(board.won?(test_player1, test_player2)).to be(true)
+
+  context "row_full?" do
+    it "returns true if a row is full of the same mark" do
+        set_row_winner(test_player1.mark)
+
+        expect(board.row_full?(test_player1.mark)).to be(true)
     end
 
-    it "Returns false if a player has not won the game" do
-      set_tie(test_player1.mark, test_player2.mark)
+    it "returns false if no rows are full of the same mark" do 
+        set_tie(test_player1.mark, test_player2.mark)
 
-      expect(board.won?(test_player1, test_player2)).to be(false)
+         expect(board.row_full?(test_player1.mark)).to be(false)
     end
   end
 
-  context "tie?" do
-    it "Returns true if the game is tied" do
-      set_tie(test_player1.mark, test_player2.mark)
+  context "col_full?" do
+        it "returns true if a column is full of the same mark" do
+        set_col_winner(test_player1.mark)
 
-      expect(board.tie?(test_player1, test_player2)).to be(true)
+        expect(board.col_full?(test_player1.mark)).to be(true)
+    end
+
+    it "returns false if no columns are full of the same mark" do 
+        set_tie(test_player1.mark, test_player2.mark)
+
+         expect(board.col_full?(test_player1.mark)).to be(false)
+    end
+  end
+
+  context "diagonal_full?" do
+        it "returns true if a diagnoal is full of the same mark" do
+        set_diag_winner(test_player1.mark)
+
+        expect(board.diagonal_full?(test_player1.mark)).to be(true)
+    end
+
+    it "returns false if no diagonals are full of the same mark" do 
+        set_tie(test_player1.mark, test_player2.mark)
+
+         expect(board.diagonal_full?(test_player1.mark)).to be(false)
     end
   end
 end
