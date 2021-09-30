@@ -10,29 +10,29 @@ describe "GameChecker" do
   let(:player2) { TestPlayer.new("Y") }
 
   def set_row_winner(mark)
-    [1,2,3].each do |position|
-        board.place_mark(mark, position)
+    [1, 2, 3].each do |position|
+      board.place_mark(mark, position)
     end
   end
 
   def set_col_winner(mark)
-    [2,5,8].each do |position|
-        board.place_mark(mark, position)
+    [2, 5, 8].each do |position|
+      board.place_mark(mark, position)
     end
   end
 
   def set_diag_winner(mark)
-    [1,5,9].each do |position|
-        board.place_mark(mark, position)
+    [1, 5, 9].each do |position|
+      board.place_mark(mark, position)
     end
   end
 
   def set_tie(mark1, mark2)
-    [1,3,5,8].each do |position|
-        board.place_mark(mark1, position)
+    [1, 3, 5, 8].each do |position|
+      board.place_mark(mark1, position)
     end
-    [2,4,6,7,9].each do |position|
-        board.place_mark(mark2, position)
+    [2, 4, 6, 7, 9].each do |position|
+      board.place_mark(mark2, position)
     end
   end
 
@@ -55,10 +55,10 @@ describe "GameChecker" do
       expect(checker.winner?(board, player1)).to be(true)
     end
 
-    it "Returns false if the player has not won the game" do 
-        set_tie(player1.mark, player2.mark)
+    it "Returns false if the player has not won the game" do
+      set_tie(player1.mark, player2.mark)
 
-        expect(checker.winner?(board, player1)).to be(false)
+      expect(checker.winner?(board, player1)).to be(false)
     end
   end
 
