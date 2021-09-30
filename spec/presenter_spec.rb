@@ -4,8 +4,7 @@ require_relative "../lib/board"
 
 describe "Presenter" do
   it "Returns the correct game board" do
-    checker = GameChecker.new
-    board = Board.new(checker)
+    board = Board.new
     presenter = Presenter.new
     expect(presenter.print_board(board)).to eq("
              |       |

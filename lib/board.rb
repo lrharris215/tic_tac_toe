@@ -1,9 +1,8 @@
 class Board
   attr_reader :cells, :game_checker
 
-  def initialize(game_checker)
+  def initialize
     @cells = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-    @game_checker = game_checker
   end
 
   def find_position(num)
@@ -13,14 +12,6 @@ class Board
   def place_mark(mark, position)
     cell_location = position.to_i - 1
     @cells[cell_location] = mark
-  end
-
-  def won?(player1, player2)
-    @game_checker.winner?(self, player1) || @game_checker.winner?(self, player2)
-  end
-
-  def tie?(player1, player2)
-    @game_checker.tie?(self, player1, player2)
   end
 
   def full?

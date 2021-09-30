@@ -11,8 +11,7 @@ class TestChecker
 end
 
 describe "Board" do
-  let(:game_checker) { TestChecker.new }
-  subject(:board) { Board.new(game_checker) }
+  subject(:board) { Board.new }
 
   let(:test_player1) { TestPlayer.new("Z") }
   let(:test_player2) { TestPlayer.new("Y") }
