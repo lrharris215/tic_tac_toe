@@ -27,12 +27,11 @@ class Game
   def play
 
     while !@game_over
-
-      
       @board.place_mark(@active_player.mark, @active_player.get_input(@display))
       print_board
       if(@game_checker.game_over?(@board, @player_1, @player_2))
         @game_over = true
+        game_over
       else
         switch_player
       end
@@ -43,6 +42,16 @@ class Game
     @active_player = @active_player == @player_1 ? @player_2 : @player_1
   end
 
+  def game_over
+    @display.output(GAME_OVER)
+    if(@game_checker.tie?(@board, @player_1, @player_2))
+      @display.output(TIE)
+    elsif (@game_checker.winner?(@board, @player_1))
+      @display.output(PLAYER1_WINS)
+    else
+      @display.output(PLAYER2_WINS)
+    end
+  end
   private
 
   def print_board
