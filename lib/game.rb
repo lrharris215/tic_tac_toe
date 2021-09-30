@@ -7,12 +7,12 @@ require_relative "./game_checker"
 
 class Game
   attr_reader :display, :board, :player_1
-  def initialize(display, presenter, board, players)
-    @display = display
-    @presenter = presenter
-    @board = board
-    @player_1 = players[0]
-    @player_2 = players[1]
+  def initialize(config_object)
+    @display = config_object[:display]
+    @presenter = config_object[:presenter]
+    @board = config_object[:board]
+    @player_1 = config_object[:player1]
+    @player_2 = config_object[:player2]
 
     @active_player = @player_1
   end

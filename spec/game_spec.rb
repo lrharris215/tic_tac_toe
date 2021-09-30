@@ -47,7 +47,16 @@ class TestPlayer
 end
 
 describe "Game" do
-  subject(:game) { Game.new(TestDisplay.new, TestPresenter.new, TestBoard.new, [TestPlayer.new("Z"), TestPlayer.new("Y")]) }
+  let(:config_object) {
+    {
+      display: TestDisplay.new,
+      presenter: TestPresenter.new,
+      board: TestBoard.new,
+      player1: TestPlayer.new("Z"),
+      player2: TestPlayer.new("Y")
+    }
+  }
+  subject(:game) { Game.new(config_object) }
 
   it "displays the welcome message on game start" do
     game.start
