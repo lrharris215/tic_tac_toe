@@ -24,7 +24,7 @@ class Game
   end
 
   def play
-    loop do 
+    loop do
       @board.place_mark(@active_player.mark, @active_player.get_input(@display))
       print_board
       switch_player

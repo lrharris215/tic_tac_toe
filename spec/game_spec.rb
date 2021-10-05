@@ -72,9 +72,8 @@ describe "Game" do
   end
 
   it "plays the game" do
-    
     game.play
-    
+
     expect(game.display.state[0]).to eq(["Z", 2, 3])
   end
 
