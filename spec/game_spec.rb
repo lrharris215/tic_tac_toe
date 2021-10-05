@@ -72,8 +72,9 @@ describe "Game" do
   end
 
   it "plays the game" do
+    
     game.play
-
+    
     expect(game.display.state[0]).to eq(["Z", 2, 3])
   end
 
@@ -84,7 +85,7 @@ describe "Game" do
   end
 
   it "Displays the game over message on game end" do
-    game.game_over
+    game.end_game
     expect(game.display.state[0]).to eq(GAME_OVER)
   end
 end
