@@ -41,13 +41,11 @@ class Game
 
   def end_game
     if @game_checker.tie?(@board, @player_1, @player_2)
-      return TIE
+      TIE
     elsif @game_checker.winner?(@board, @player_1)
-      return PLAYER1_WINS
+      PLAYER1_WINS
     elsif @game_checker.winner?(@board, @player_2)
-      return PLAYER2_WINS
-    else
-      return nil
+      PLAYER2_WINS
     end
   end
 
@@ -55,6 +53,6 @@ class Game
 
   def print_board
     @display.output(@presenter.print_board(@board))
-    @display.output(@presenter.print_results(self.end_game))
+    @display.output(@presenter.print_results(end_game))
   end
 end
