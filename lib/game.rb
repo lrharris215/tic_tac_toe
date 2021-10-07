@@ -6,32 +6,49 @@ require_relative "./constants"
 require_relative "./game_checker"
 
 class Game
-  attr_reader :display, :board, :player_1
-  def initialize(display, presenter, board, players)
-    @display = display
-    @presenter = presenter
-    @board = board
-    @player_1 = players[0]
-    @player_2 = players[1]
+  attr_reader :display, :board, :player_1, :player_2, :active_player, :game_checker
+  def initialize(config_object)
+    @display = config_object[:display]
+    @presenter = config_object[:presenter]
+    @board = config_object[:board]
+    @player_1 = config_object[:player_1]
+    @player_2 = config_object[:player_2]
+    @game_checker = config_object[:game_checker]
 
     @active_player = @player_1
   end
 
   def start
     @display.output(WELCOME)
+    print_board
   end
 
   def play
-    print_board
-    @board.place_mark(@player_1.mark, @player_1.get_input(@display))
-    print_board
-    @board.place_mark(@player_2.mark, @player_2.get_input(@display))
-    print_board
+    until @game_checker.game_over?(@board, @player_1, @player_2)
+      @board.place_mark(@active_player.mark, @active_player.get_input(@display))
+      print_board
+      switch_player
+    end
+  end
+
+  def switch_player
+    @active_player = @active_player == @player_1 ? @player_2 : @player_1
+  end
+
+  def end_game
+    if @game_checker.tie?(@board, @player_1, @player_2)
+      TIE
+    elsif @game_checker.winner?(@board, @player_1)
+      PLAYER1_WINS
+    elsif @game_checker.winner?(@board, @player_2)
+      PLAYER2_WINS
+    end
   end
 
   private
 
   def print_board
     @display.output(@presenter.print_board(@board))
+    @display.output(@presenter.print_results(end_game))
   end
 end

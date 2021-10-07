@@ -13,4 +13,8 @@ class Presenter
              |       |
         "
   end
+
+  def print_results(result)
+    result.to_s
+  end
 end

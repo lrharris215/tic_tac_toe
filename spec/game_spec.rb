@@ -22,6 +22,9 @@ class TestPresenter
   def print_board(board)
     board.cells.dup
   end
+
+  def print_results(result)
+  end
 end
 
 class TestBoard
@@ -46,23 +49,46 @@ class TestPlayer
   end
 end
 
+class TestChecker
+  @first_loop_done = false
+  def game_over?(board, player_1, player_2)
+    return true if @first_loop_done
+
+    @first_loop_done = true
+    false
+  end
+end
+
 describe "Game" do
-  subject(:game) { Game.new(TestDisplay.new, TestPresenter.new, TestBoard.new, [TestPlayer.new("Z"), TestPlayer.new("Y")]) }
+  let(:config_object) {
+    {
+      display: TestDisplay.new,
+      presenter: TestPresenter.new,
+      board: TestBoard.new,
+      game_checker: TestChecker.new,
+      player_1: TestPlayer.new("Z"),
+      player_2: TestPlayer.new("Y")
+    }
+  }
+  subject(:game) { Game.new(config_object) }
 
   it "displays the welcome message on game start" do
     game.start
 
-    expect(game.display.state[0]).to eq("Welcome to Tic Tac Toe!")
+    expect(game.display.state[0]).to eq(WELCOME)
   end
 
   it "plays the game" do
     game.play
 
-    expect(game.display.state[1]).to eq(["Z", 2, 3])
+    expect(game.display.state[0]).to eq(["Z", 2, 3])
+
+    # allow(game.game_checker).to receive(:game_over?).and_return(true)
   end
 
   it "Switches players" do
-    game.play
-    expect(game.display.state[2]).to eq(["Y", 2, 3])
+    game.switch_player
+
+    expect(game.active_player).to eq(game.player_2)
   end
 end
