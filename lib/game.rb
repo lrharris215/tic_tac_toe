@@ -29,7 +29,7 @@ class Game
       print_board
       switch_player
       if @game_checker.game_over?(@board, @player_1, @player_2)
-        end_game
+        @display.output(GAME_OVER)
         break
       end
     end

@@ -23,7 +23,7 @@ class TestPresenter
     board.cells.dup
   end
   def print_results(result)
-    
+
   end
 end
 
@@ -84,10 +84,5 @@ describe "Game" do
     game.switch_player
 
     expect(game.active_player).to eq(game.player_2)
-  end
-
-  it "Displays the game over message on game end" do
-    game.end_game
-    expect(game.display.state[0]).to eq(GAME_OVER)
   end
 end
