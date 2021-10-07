@@ -14,6 +14,7 @@ class Game
     @player_1 = config_object[:player_1]
     @player_2 = config_object[:player_2]
     @game_checker = config_object[:game_checker]
+    @validator = config_object[:validator]
 
     @active_player = @player_1
   end
