@@ -4,6 +4,7 @@ require_relative "./board"
 require_relative "./player"
 require_relative "./constants"
 require_relative "./game_checker"
+require_relative "./validator"
 
 class Game
   attr_reader :display, :board, :player_1, :player_2, :active_player, :game_checker
@@ -26,7 +27,11 @@ class Game
 
   def play
     until @game_checker.game_over?(@board, @player_1, @player_2)
-      @board.place_mark(@active_player.mark, @active_player.get_input(@display))
+      input = @active_player.get_input(@display)
+      until @validator.valid_move?(board, input)
+        input = @active_player.get_input(@display)
+      end
+      @board.place_mark(@active_player.mark, input)
       print_board
       switch_player
     end

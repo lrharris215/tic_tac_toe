@@ -6,7 +6,7 @@ class Board
   end
 
   def find_position(num)
-    @cells[num - 1]
+    @cells[num.to_i - 1]
   end
 
   def place_mark(mark, position)

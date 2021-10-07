@@ -59,6 +59,12 @@ class TestChecker
   end
 end
 
+class TestValidator
+  def valid_move?(board, move)
+    true
+  end
+end
+
 describe "Game" do
   let(:config_object) {
     {
@@ -67,7 +73,8 @@ describe "Game" do
       board: TestBoard.new,
       game_checker: TestChecker.new,
       player_1: TestPlayer.new("Z"),
-      player_2: TestPlayer.new("Y")
+      player_2: TestPlayer.new("Y"),
+      validator: TestValidator.new
     }
   }
   subject(:game) { Game.new(config_object) }
