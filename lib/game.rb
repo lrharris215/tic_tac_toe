@@ -27,11 +27,7 @@ class Game
 
   def play
     until @game_checker.game_over?(@board, @player_1, @player_2)
-      input = @active_player.get_input(@display)
-      until @validator.valid_move?(board, input)
-        input = @active_player.get_input(@display)
-      end
-      @board.place_mark(@active_player.mark, input)
+      @board.place_mark(@active_player.mark, get_valid_input)
       print_board
       switch_player
     end
@@ -56,5 +52,13 @@ class Game
   def print_board
     @display.output(@presenter.print_board(@board))
     @display.output(@presenter.print_results(end_game))
+  end
+
+  def get_valid_input
+    input = @active_player.get_input(@display)
+    until @validator.valid_move?(@board, input)
+      input = @active_player.get_input(@display)
+    end
+    input
   end
 end
