@@ -24,14 +24,10 @@ class Game
   end
 
   def play
-    loop do
+    until @game_checker.game_over?(@board, @player_1, @player_2)
       @board.place_mark(@active_player.mark, @active_player.get_input(@display))
       print_board
       switch_player
-      if @game_checker.game_over?(@board, @player_1, @player_2)
-        @display.output(GAME_OVER)
-        break
-      end
     end
   end
 

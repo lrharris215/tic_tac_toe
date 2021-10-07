@@ -50,8 +50,12 @@ class TestPlayer
 end
 
 class TestChecker
+  @first_loop_done = false
   def game_over?(board, player_1, player_2)
-    true
+    return true if @first_loop_done
+
+    @first_loop_done = true
+    false
   end
 end
 
@@ -78,6 +82,8 @@ describe "Game" do
     game.play
 
     expect(game.display.state[0]).to eq(["Z", 2, 3])
+
+    # allow(game.game_checker).to receive(:game_over?).and_return(true)
   end
 
   it "Switches players" do
