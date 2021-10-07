@@ -13,4 +13,9 @@ class Presenter
              |       |
         "
   end
+
+  def print_results(result)
+    #prints results of gamechecker.winner,tie,gameover
+    "#{result}"
+  end
 end

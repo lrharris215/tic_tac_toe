@@ -22,6 +22,9 @@ class TestPresenter
   def print_board(board)
     board.cells.dup
   end
+  def print_results(result)
+    
+  end
 end
 
 class TestBoard
