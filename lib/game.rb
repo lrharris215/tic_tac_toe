@@ -57,6 +57,7 @@ class Game
   def get_valid_input
     input = @active_player.get_input(@display)
     until @validator.valid_move?(@board, input)
+      @display.output(INPUT_ERROR)
       input = @active_player.get_input(@display)
     end
     input

@@ -9,3 +9,5 @@ TIE = "It's a tie!!"
 PLAYER1_WINS = "Player X has won the game!"
 
 PLAYER2_WINS = "Player O has won the game!"
+
+INPUT_ERROR = "That is not a valid input!"
