@@ -1,8 +1,8 @@
 describe "GameChecker" do
   subject(:checker) { GameChecker.new }
   let(:board) { TestBoard.new }
-  let(:player1) { TestPlayer.new("Z") }
-  let(:player2) { TestPlayer.new("Y") }
+  let(:player1) { TestPlayer.new(TestValidator.new, "Z") }
+  let(:player2) { TestPlayer.new(TestValidator.new, "Y") }
 
   context "winner?" do
     it "Returns true if the game has been won horizontally" do

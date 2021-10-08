@@ -11,9 +11,8 @@ describe "Game" do
       presenter: TestPresenter.new,
       board: TestBoard.new,
       game_checker: TestChecker.new,
-      player_1: TestPlayer.new("Z"),
-      player_2: TestPlayer.new("Y"),
-      validator: TestValidator.new,
+      player_1: TestPlayer.new(TestValidator.new, "Z"),
+      player_2: TestPlayer.new(TestValidator.new, "Y"),
       converter: TestConverter.new
     }
   }

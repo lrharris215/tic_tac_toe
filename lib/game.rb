@@ -16,7 +16,6 @@ class Game
     @player_1 = config_object[:player_1]
     @player_2 = config_object[:player_2]
     @game_checker = config_object[:game_checker]
-    @validator = config_object[:validator]
     @converter = config_object[:converter]
 
     @active_player = @player_1
@@ -29,7 +28,7 @@ class Game
 
   def play
     until @game_checker.game_over?(@board, @player_1, @player_2)
-      @board.place_mark(@active_player.mark, get_valid_input)
+      @board.place_mark(@active_player.mark, @active_player.get_valid_input(@display, @board, @converter))
       print_board
       switch_player
     end
@@ -54,16 +53,5 @@ class Game
   def print_board
     @display.output(@presenter.print_board(@board))
     @display.output(@presenter.print_results(end_game))
-  end
-
-  def get_valid_input
-    input = @active_player.get_input(@display)
-    # input is a string
-    until @validator.valid_move?(@board, input, @converter)
-      @display.output(INPUT_ERROR)
-      input = @active_player.get_input(@display)
-    end
-    # change it to an int
-    @converter.numberfy(input)
   end
 end

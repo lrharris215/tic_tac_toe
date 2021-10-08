@@ -17,7 +17,7 @@ describe "Validator" do
     end
     it "Rejects input if space is already taken" do
       board = TestBoard.new
-      player1 = TestPlayer.new("Z")
+      player1 = TestPlayer.new(Validator.new, "Z")
 
       board.place_mark(player1.mark, 1)
       expect(validator.valid_move?(board, "1", converter)).to be(false)

@@ -7,7 +7,8 @@ config_object = {
   game_checker: GameChecker.new,
   player_1: Player.new("X"),
   player_2: Player.new("O"),
-  validator: Validator.new
+  validator: Validator.new,
+  converter: Converter.new
 }
 game = Game.new(config_object)
 game.start

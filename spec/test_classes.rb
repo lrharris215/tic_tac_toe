@@ -51,11 +51,16 @@ end
 
 class TestPlayer
   attr_reader :mark
-  def initialize(mark)
+  def initialize(validator, mark)
     @mark = mark
+    @validator = validator
   end
 
   def get_input(display)
+    1
+  end
+
+  def get_valid_input(display, board, converter)
     1
   end
 end

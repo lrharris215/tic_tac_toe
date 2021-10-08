@@ -1,8 +1,8 @@
 describe "Board" do
   subject(:board) { Board.new }
 
-  let(:test_player1) { TestPlayer.new("Z") }
-  let(:test_player2) { TestPlayer.new("Y") }
+  let(:test_player1) { TestPlayer.new(TestValidator.new, "Z") }
+  let(:test_player2) { TestPlayer.new(TestValidator.new, "Y") }
 
   def set_row_winner(mark)
     [1, 2, 3].each do |position|
