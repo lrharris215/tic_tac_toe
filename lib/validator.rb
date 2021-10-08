@@ -7,7 +7,9 @@ class Validator
 
   def valid_position?(board, position)
     # not taken by another piece
-    if /^[1-9]$/.match?(board.find_position(position).to_s)
+    #input is a string
+    pos = position.to_i
+    if /^[1-9]$/.match?(board.find_position(position.to_i).to_s)
       return true
     end
     false

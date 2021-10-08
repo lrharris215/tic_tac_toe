@@ -56,10 +56,12 @@ class Game
 
   def get_valid_input
     input = @active_player.get_input(@display)
+    #input is a string
     until @validator.valid_move?(@board, input)
       @display.output(INPUT_ERROR)
       input = @active_player.get_input(@display)
     end
-    input
+    #change it to an int
+    input.to_i
   end
 end
