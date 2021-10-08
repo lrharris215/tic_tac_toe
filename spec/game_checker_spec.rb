@@ -1,21 +1,3 @@
-require "rspec"
-
-require_relative "../lib/game_checker"
-require_relative "../lib/board"
-
-class TestBoard
-  def row_full?(mark)
-    false
-  end
-
-  def col_full?(mark)
-    false
-  end
-
-  def diagonal_full?(mark)
-    false
-  end
-end
 describe "GameChecker" do
   subject(:checker) { GameChecker.new }
   let(:board) { TestBoard.new }

@@ -1,5 +1,3 @@
-require "rspec"
-require_relative "../lib/player"
 describe "Player" do
   it "Receives input from the player" do
     @player = Player.new("Z")

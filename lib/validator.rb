@@ -1,15 +1,13 @@
 class Validator
-  def valid_move?(board, move)
-    valid_input?(move) && valid_position?(board, move)
+  def valid_move?(board, move, converter)
+    valid_input?(move) && valid_position?(board, move, converter)
   end
 
   private
 
-  def valid_position?(board, position)
+  def valid_position?(board, position, converter)
     # not taken by another piece
-    #input is a string
-    pos = position.to_i
-    if /^[1-9]$/.match?(board.find_position(position.to_i).to_s)
+    if /^[1-9]$/.match?(converter.stringify(board.find_position(converter.numberfy(position))))
       return true
     end
     false

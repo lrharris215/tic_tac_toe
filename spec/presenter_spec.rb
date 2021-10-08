@@ -1,7 +1,3 @@
-require "rspec"
-require_relative "../lib/presenter"
-require_relative "../lib/board"
-
 describe "Presenter" do
   it "Returns the correct game board" do
     board = Board.new

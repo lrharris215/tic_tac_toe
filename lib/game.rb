@@ -5,6 +5,7 @@ require_relative "./player"
 require_relative "./constants"
 require_relative "./game_checker"
 require_relative "./validator"
+require_relative "./converter"
 
 class Game
   attr_reader :display, :board, :player_1, :player_2, :active_player, :game_checker
@@ -16,6 +17,7 @@ class Game
     @player_2 = config_object[:player_2]
     @game_checker = config_object[:game_checker]
     @validator = config_object[:validator]
+    @converter = config_object[:converter]
 
     @active_player = @player_1
   end
@@ -56,12 +58,12 @@ class Game
 
   def get_valid_input
     input = @active_player.get_input(@display)
-    #input is a string
-    until @validator.valid_move?(@board, input)
+    # input is a string
+    until @validator.valid_move?(@board, input, @converter)
       @display.output(INPUT_ERROR)
       input = @active_player.get_input(@display)
     end
-    #change it to an int
-    input.to_i
+    # change it to an int
+    @converter.numberfy(input)
   end
 end

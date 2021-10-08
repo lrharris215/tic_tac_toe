@@ -2,68 +2,7 @@ require "rspec"
 require_relative "./spec_helper"
 require_relative "../lib/game"
 require_relative "../lib/constants"
-
-class TestDisplay
-  attr_reader :state
-  def initialize
-    @state = []
-  end
-
-  def output(message)
-    @state.push(message)
-  end
-
-  def input
-    1
-  end
-end
-
-class TestPresenter
-  def print_board(board)
-    board.cells.dup
-  end
-
-  def print_results(result)
-  end
-end
-
-class TestBoard
-  attr_reader :cells
-  def initialize
-    @cells = [1, 2, 3]
-  end
-
-  def place_mark(mark, position)
-    @cells[position - 1] = mark
-  end
-end
-
-class TestPlayer
-  attr_reader :mark
-  def initialize(mark)
-    @mark = mark
-  end
-
-  def get_input(display)
-    1
-  end
-end
-
-class TestChecker
-  @first_loop_done = false
-  def game_over?(board, player_1, player_2)
-    return true if @first_loop_done
-
-    @first_loop_done = true
-    false
-  end
-end
-
-class TestValidator
-  def valid_move?(board, move)
-    true
-  end
-end
+require_relative "./test_classes"
 
 describe "Game" do
   let(:config_object) {
@@ -74,7 +13,8 @@ describe "Game" do
       game_checker: TestChecker.new,
       player_1: TestPlayer.new("Z"),
       player_2: TestPlayer.new("Y"),
-      validator: TestValidator.new
+      validator: TestValidator.new,
+      converter: TestConverter.new
     }
   }
   subject(:game) { Game.new(config_object) }

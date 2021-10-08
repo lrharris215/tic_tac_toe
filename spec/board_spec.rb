@@ -1,15 +1,3 @@
-require_relative "../lib/board"
-
-class TestChecker
-  def winner?(board, player)
-    true
-  end
-
-  def tie?(board, player1, player2)
-    true
-  end
-end
-
 describe "Board" do
   subject(:board) { Board.new }
 
