@@ -32,6 +32,7 @@ class Game
       print_board
       switch_player
     end
+    play_again?
   end
 
   def switch_player
@@ -46,6 +47,22 @@ class Game
     elsif @game_checker.winner?(@board, @player_2)
       PLAYER2_WINS
     end
+  end
+
+  def play_again?
+    # asks if the player wants to restart the game
+    @display.output(PLAY_AGAIN)
+    answer = @display.input
+    if answer === "yes" || answer === "y"
+      restart
+    end
+  end
+
+  def restart
+    @board = Board.new
+    @active_player = @player_1
+    start
+    play
   end
 
   private
