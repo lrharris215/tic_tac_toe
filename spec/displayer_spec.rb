@@ -1,6 +1,3 @@
-require "rspec"
-require_relative "../lib/displayer"
-
 class TestOutputFunction
   def puts(message)
     message

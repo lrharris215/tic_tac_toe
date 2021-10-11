@@ -1,20 +1,8 @@
-require_relative "../lib/board"
-
-class TestChecker
-  def winner?(board, player)
-    true
-  end
-
-  def tie?(board, player1, player2)
-    true
-  end
-end
-
 describe "Board" do
   subject(:board) { Board.new }
 
-  let(:test_player1) { TestPlayer.new("Z") }
-  let(:test_player2) { TestPlayer.new("Y") }
+  let(:test_player1) { TestPlayer.new(TestValidator.new, "Z") }
+  let(:test_player2) { TestPlayer.new(TestValidator.new, "Y") }
 
   def set_row_winner(mark)
     [1, 2, 3].each do |position|
