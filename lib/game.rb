@@ -32,7 +32,6 @@ class Game
       print_board
       switch_player
     end
-    play_again?
   end
 
   def switch_player
@@ -54,16 +53,19 @@ class Game
     @display.output(PLAY_AGAIN)
     answer = @display.input
     if answer === "yes" || answer === "y"
-      restart
+      puts "play again"
+      return true
+    else
+      return false
     end
   end
 
-  def restart
-    @board = Board.new
-    @active_player = @player_1
-    start
-    play
-  end
+  # def restart
+  #   @board = Board.new
+  #   @active_player = @player_1
+  #   start
+  #   play
+  # end
 
   private
 

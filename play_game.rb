@@ -1,4 +1,4 @@
-require_relative "./lib/game"
+require_relative "./lib/program"
 
 config_object = {
   display: Displayer.new($stdout, $stdin),
@@ -9,6 +9,11 @@ config_object = {
   player_2: Player.new(Validator.new, "O"),
   converter: Converter.new
 }
-game = Game.new(config_object)
-game.start
-game.play
+
+program = Program.new(config_object)
+program.restart_game
+
+
+# game = Game.new(config_object)
+# game.start
+# game.play
