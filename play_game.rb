@@ -13,7 +13,6 @@ config_object = {
 program = Program.new(config_object)
 program.restart_game
 
-
 # game = Game.new(config_object)
 # game.start
 # game.play

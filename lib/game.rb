@@ -52,11 +52,7 @@ class Game
     # asks if the player wants to restart the game
     @display.output(PLAY_AGAIN)
     answer = @display.input
-    if answer === "yes" || answer === "y"
-      return true
-    else
-      return false
-    end
+    answer === "yes" || answer === "y"
   end
 
   private

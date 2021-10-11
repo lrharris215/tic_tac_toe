@@ -1,8 +1,9 @@
-require_relative './game'
+require_relative "./game"
 class Program
-    def initialize(config)
-        @config = config
-    end
+  def initialize(config)
+    @config = config
+  end
+
   def create_game
     replace_board
     @game = Game.new(@config)
@@ -20,11 +21,11 @@ class Program
   end
 
   def play_again?
-    if @game.play_again? 
-        restart_game
+    if @game.play_again?
+      restart_game
     end
   end
-  
+
   private
 
   def replace_board

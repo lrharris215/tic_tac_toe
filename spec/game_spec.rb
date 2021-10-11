@@ -38,7 +38,7 @@ describe "Game" do
     expect(game.active_player).to eq(game.player_2)
   end
 
-  it "Asks the player to play again" do 
+  it "Asks the player to play again" do
     allow(game.display).to receive(:input).and_return("yes")
 
     expect(game.play_again?).to be(true)
