@@ -21,11 +21,10 @@ class Program
 
   def play_again?
     if @game.play_again? 
-        puts 'i said yes'
         restart_game
     end
   end
-
+  
   private
 
   def replace_board

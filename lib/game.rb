@@ -53,19 +53,11 @@ class Game
     @display.output(PLAY_AGAIN)
     answer = @display.input
     if answer === "yes" || answer === "y"
-      puts "play again"
       return true
     else
       return false
     end
   end
-
-  # def restart
-  #   @board = Board.new
-  #   @active_player = @player_1
-  #   start
-  #   play
-  # end
 
   private
 
