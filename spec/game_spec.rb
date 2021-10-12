@@ -11,9 +11,10 @@ describe "Game" do
       presenter: TestPresenter.new,
       board: TestBoard.new,
       game_checker: TestChecker.new,
-      player_1: TestPlayer.new(TestValidator.new, "Z"),
-      player_2: TestPlayer.new(TestValidator.new, "Y"),
-      converter: TestConverter.new
+      player_1: TestPlayer.new(TestReceiver.new, "Z"),
+      player_2: TestPlayer.new(TestReceiver.new, "Y"),
+      converter: TestConverter.new,
+      receiver: TestReceiver.new
     }
   }
   subject(:game) { Game.new(config_object) }
@@ -37,4 +38,10 @@ describe "Game" do
 
     expect(game.active_player).to eq(game.player_2)
   end
+
+  # it "Asks the player to play again" do
+  #   allow(game.display).to receive(:input).and_return("yes")
+
+  #   expect(game.play_again?).to be(true)
+  # end
 end

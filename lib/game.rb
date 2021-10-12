@@ -5,6 +5,7 @@ require_relative "./player"
 require_relative "./constants"
 require_relative "./game_checker"
 require_relative "./validator"
+require_relative "./receiver"
 require_relative "./converter"
 
 class Game
@@ -16,7 +17,7 @@ class Game
     @player_1 = config_object[:player_1]
     @player_2 = config_object[:player_2]
     @game_checker = config_object[:game_checker]
-    @converter = config_object[:converter]
+    @receiver = config_object[:receiver]
 
     @active_player = @player_1
   end
@@ -28,11 +29,10 @@ class Game
 
   def play
     until @game_checker.game_over?(@board, @player_1, @player_2)
-      @board.place_mark(@active_player.mark, @active_player.get_valid_input(@display, @board, @converter))
+      @board.place_mark(@active_player.mark, @active_player.get_input(@display, @board))
       print_board
       switch_player
     end
-    play_again?
   end
 
   def switch_player
@@ -49,21 +49,12 @@ class Game
     end
   end
 
-  def play_again?
-    # asks if the player wants to restart the game
-    @display.output(PLAY_AGAIN)
-    answer = @display.input
-    if answer === "yes" || answer === "y"
-      restart
-    end
-  end
-
-  def restart
-    @board = Board.new
-    @active_player = @player_1
-    start
-    play
-  end
+  # def play_again?
+  #   # asks if the player wants to restart the game
+  #   @display.output(PLAY_AGAIN)
+  #   answer = @receiver.input
+  #   answer === "yes" || answer === "y"
+  # end
 
   private
 
