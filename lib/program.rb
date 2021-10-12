@@ -2,11 +2,12 @@ require_relative "./game"
 class Program
   def initialize(config)
     @config = config
+    @game = create_game
   end
 
   def create_game
     replace_board
-    @game = Game.new(@config)
+    Game.new(@config)
   end
 
   def play_game
