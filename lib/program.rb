@@ -6,7 +6,7 @@ class Program
   end
 
   def create_game
-    replace_board
+    reset_board
     Game.new(@config)
   end
 
@@ -17,19 +17,22 @@ class Program
   end
 
   def restart_game
-    create_game
+    @game = create_game
     play_game
   end
 
   def play_again?
     if @game.play_again?
+        puts "restart time"
       restart_game
     end
   end
 
   private
 
-  def replace_board
+  def reset_board
     @config[:board] = Board.new
+    puts "board replaced:"
+    puts @config[:board].cells
   end
 end

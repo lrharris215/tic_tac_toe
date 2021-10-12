@@ -9,11 +9,11 @@ class Player
     @receiver = receiver
   end
 
-  def get_input(display)
+  def get_input(display, board)
     display.output("It is Player #{@mark}'s turn!")
     display.output(GET_PLAYER_INPUT)
     # display.input
-    receiver.get_player_move(mark)
+    @receiver.get_player_move(board, @mark)
   end
 
 #   def get_valid_input(display, board, converter)

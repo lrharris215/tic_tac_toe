@@ -51,18 +51,19 @@ end
 
 class TestPlayer
   attr_reader :mark
-  def initialize(validator, mark)
+  def initialize(receiver, mark)
     @mark = mark
-    @validator = validator
+    # @validator = validator
+    @receiver = receiver
   end
 
-  def get_input(display)
+  def get_input(display, board)
     1
   end
 
-  def get_valid_input(display, board, converter)
-    1
-  end
+#   def get_valid_input(display, board, converter)
+#     1
+#   end
 end
 
 class TestChecker
@@ -97,4 +98,14 @@ class TestConverter
   def stringify(number)
     number.to_s
   end
+end
+
+class TestReceiver
+    def input
+        "yes"
+    end
+
+    def get_player_move
+
+    end
 end

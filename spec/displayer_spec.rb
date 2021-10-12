@@ -4,12 +4,6 @@ class TestOutputFunction
   end
 end
 
-class TestInputFunction
-  def gets
-    "hello\n"
-  end
-end
-
 describe "Displayer" do
   subject(:display) { Displayer.new(TestOutputFunction.new, TestInputFunction.new) }
 
@@ -17,7 +11,7 @@ describe "Displayer" do
     expect(display.output("message")).to eq("message")
   end
 
-  it "Receives input" do
-    expect(display.input).to eq("hello")
-  end
+#   it "Receives input" do
+#     expect(display.input).to eq("hello")
+#   end
 end

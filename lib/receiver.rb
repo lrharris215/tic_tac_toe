@@ -15,7 +15,7 @@ class Receiver
         until @validator.valid_move?(board, move, @converter)
             move = input
         end
-        converter.numberfy(move)
+        @converter.numberfy(move)
     end
 
 end

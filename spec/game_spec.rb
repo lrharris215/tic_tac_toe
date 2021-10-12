@@ -11,9 +11,10 @@ describe "Game" do
       presenter: TestPresenter.new,
       board: TestBoard.new,
       game_checker: TestChecker.new,
-      player_1: TestPlayer.new(TestValidator.new, "Z"),
-      player_2: TestPlayer.new(TestValidator.new, "Y"),
-      converter: TestConverter.new
+      player_1: TestPlayer.new(TestReceiver.new, "Z"),
+      player_2: TestPlayer.new(TestReceiver.new, "Y"),
+      converter: TestConverter.new,
+      receiver: TestReceiver.new
     }
   }
   subject(:game) { Game.new(config_object) }
