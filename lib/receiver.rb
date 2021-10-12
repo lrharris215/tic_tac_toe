@@ -23,7 +23,7 @@ class Receiver
   def get_player_two_choice(display)
     choice = input
     until @validator.valid_player2?(choice)
-       display.output(INPUT_ERROR)
+      display.output(INPUT_ERROR)
       choice = input
     end
     choice

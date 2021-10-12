@@ -41,7 +41,6 @@ class Program
     elsif /\bcomputer\b/i.match?(player_choice)
       set_player_two(Player.new(ComputerReceiver.new(Validator.new, Converter.new), "O"))
     end
-
   end
 
   private

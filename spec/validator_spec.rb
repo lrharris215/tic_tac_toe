@@ -24,16 +24,16 @@ describe "Validator" do
     end
   end
 
-  context "valid_player_2?" do 
+  context "valid_player_2?" do
     it "accepts a human player as player 2" do
       expect(validator.valid_player2?("Human")).to be(true)
     end
 
-    it "accepts a computer player as player 2" do 
+    it "accepts a computer player as player 2" do
       expect(validator.valid_player2?("computer")).to be(true)
     end
 
-    it "does not accept random words as player 2" do 
+    it "does not accept random words as player 2" do
       expect(validator.valid_player2?("puppy")).to be(false)
     end
   end
