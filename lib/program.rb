@@ -23,7 +23,7 @@ class Program
 
   def play_again?
     if @game.play_again?
-        puts "restart time"
+      puts "restart time"
       restart_game
     end
   end

@@ -61,9 +61,9 @@ class TestPlayer
     1
   end
 
-#   def get_valid_input(display, board, converter)
-#     1
-#   end
+  #   def get_valid_input(display, board, converter)
+  #     1
+  #   end
 end
 
 class TestChecker
@@ -101,11 +101,10 @@ class TestConverter
 end
 
 class TestReceiver
-    def input
-        "yes"
-    end
+  def input
+    "yes"
+  end
 
-    def get_player_move
-
-    end
+  def get_player_move
+  end
 end

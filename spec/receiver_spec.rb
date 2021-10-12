@@ -5,9 +5,9 @@ class TestInputFunction
 end
 
 describe "Receiver" do
-    subject(:receiver) { Receiver.new(TestInputFunction.new, TestValidator.new, TestConverter.new)}
+  subject(:receiver) { Receiver.new(TestInputFunction.new, TestValidator.new, TestConverter.new) }
 
-    it "Receives input" do 
-        expect(receiver.input).to eq("hello")
-    end
+  it "Receives input" do
+    expect(receiver.input).to eq("hello")
+  end
 end

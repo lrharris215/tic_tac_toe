@@ -1,7 +1,7 @@
 require_relative "./lib/program"
 
 config_object = {
-  display: Displayer.new($stdout, $stdin),
+  display: Displayer.new($stdout),
   presenter: Presenter.new,
   board: Board.new,
   game_checker: GameChecker.new,
@@ -13,7 +13,3 @@ config_object = {
 
 program = Program.new(config_object)
 program.restart_game
-
-# game = Game.new(config_object)
-# game.start
-# game.play

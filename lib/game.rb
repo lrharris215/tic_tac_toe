@@ -5,7 +5,6 @@ require_relative "./player"
 require_relative "./constants"
 require_relative "./game_checker"
 require_relative "./validator"
-require_relative "./converter"
 require_relative "./receiver"
 
 class Game
@@ -17,8 +16,7 @@ class Game
     @player_1 = config_object[:player_1]
     @player_2 = config_object[:player_2]
     @game_checker = config_object[:game_checker]
-    @converter = config_object[:converter]
-    @receiver =  config_object[:receiver]
+    @receiver = config_object[:receiver]
 
     @active_player = @player_1
   end
