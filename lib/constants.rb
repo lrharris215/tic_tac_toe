@@ -14,4 +14,4 @@ INPUT_ERROR = "That is not a valid input!"
 
 PLAY_AGAIN = "Would you like to play again? Please enter 'yes' or 'y' to play again!"
 
-PLAYER_CHOICE = "Would you like to play against a computer or human player? Press 1 for human, 2 for computer."
+PLAYER_CHOICE = "Would you like to play against a computer or human player?"

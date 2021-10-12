@@ -11,6 +11,6 @@ class Player
   def get_input(display, board)
     display.output("It is Player #{@mark}'s turn!")
     display.output(GET_PLAYER_INPUT)
-    @receiver.get_player_move(board, @mark)
+    @receiver.get_player_move(display, board, @mark)
   end
 end

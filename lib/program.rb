@@ -35,10 +35,10 @@ class Program
 
   def configure_players
     @display.output(PLAYER_CHOICE)
-    player_choice = @receiver.input
-    if player_choice === "1"
+    player_choice = @receiver.get_player_two_choice(@display)
+    if /\bhuman\b/i.match?(player_choice)
       set_player_two(Player.new(@receiver, "O"))
-    elsif player_choice === "2"
+    elsif /\bcomputer\b/i.match?(player_choice)
       set_player_two(Player.new(ComputerReceiver.new(Validator.new, Converter.new), "O"))
     end
 

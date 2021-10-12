@@ -10,7 +10,7 @@ class ComputerReceiver
     rand(1..9)
   end
 
-  def get_player_move(board, mark)
+  def get_player_move(display, board, mark)
     move = input
 
     until @validator.valid_move?(board, move, @converter)
