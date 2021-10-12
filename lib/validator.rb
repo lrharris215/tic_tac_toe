@@ -4,7 +4,7 @@ class Validator
   end
 
   def valid_player2?(choice)
-    /\bhuman\b/.match?(choice) || /\bcomputer\b/.match?(choice)
+    /\bhuman\b/i.match?(choice) || /\bcomputer\b/i.match?(choice)
   end
 
   private

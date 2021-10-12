@@ -26,7 +26,7 @@ describe "Validator" do
 
   context "valid_player_2?" do 
     it "accepts a human player as player 2" do
-      expect(validator.valid_player2?("human")).to be(true)
+      expect(validator.valid_player2?("Human")).to be(true)
     end
 
     it "accepts a computer player as player 2" do 
