@@ -18,7 +18,6 @@ class Game
     @player_1 = config_object[:player_1]
     @player_2 = config_object[:player_2]
     @game_checker = config_object[:game_checker]
-    @receiver = config_object[:receiver]
 
     @active_player = @player_1
   end
@@ -49,13 +48,6 @@ class Game
       PLAYER2_WINS
     end
   end
-
-  # def play_again?
-  #   # asks if the player wants to restart the game
-  #   @display.output(PLAY_AGAIN)
-  #   answer = @receiver.input
-  #   answer === "yes" || answer === "y"
-  # end
 
   private
 
