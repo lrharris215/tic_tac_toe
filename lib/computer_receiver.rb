@@ -7,7 +7,7 @@ class ComputerReceiver
   end
 
   def input
-    input = rand(1..9)
+    rand(1..9)
   end
 
   def get_player_move(board, mark)
