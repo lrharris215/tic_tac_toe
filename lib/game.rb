@@ -7,6 +7,7 @@ require_relative "./game_checker"
 require_relative "./validator"
 require_relative "./receiver"
 require_relative "./converter"
+require_relative "./computer_receiver"
 
 class Game
   attr_reader :display, :board, :player_1, :player_2, :active_player, :game_checker
