@@ -1,6 +1,6 @@
 require_relative "./game"
 class Program
-  attr_reader :game
+  attr_reader :game, :receiver, :config
   def initialize(config)
     @config = config
     @display = config[:display]

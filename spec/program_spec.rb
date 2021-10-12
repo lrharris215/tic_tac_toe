@@ -22,4 +22,17 @@ describe "Program" do
     allow(program).to receive(:restart_game).and_return(true)
     expect(program.play_again?).to eq(true)
   end
+  context "configure_players" do
+    it "allows user to play against a human" do
+      allow(program.receiver).to receive(:get_player_two_choice).and_return("human")
+      program.configure_players
+      expect(program.config[:player_2].mark).to eq("O")
+    end
+
+    it "allows user to play against a computer" do
+      allow(program.receiver).to receive(:get_player_two_choice).and_return("computer")
+      program.configure_players
+      expect(program.config[:player_2].mark).to eq("O")
+    end
+  end
 end
