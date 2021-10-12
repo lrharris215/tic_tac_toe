@@ -102,7 +102,7 @@ end
 
 class TestReceiver
   def input
-    "yes"
+    "y"
   end
 
   def get_player_move

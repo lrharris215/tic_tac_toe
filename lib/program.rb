@@ -1,5 +1,6 @@
 require_relative "./game"
 class Program
+  attr_reader :game
   def initialize(config)
     @config = config
     @display = config[:display]
@@ -25,7 +26,7 @@ class Program
 
   def play_again?
     @display.output(PLAY_AGAIN)
-    answer = @receiver.input 
+    answer = @receiver.input
     if answer === "yes" || answer === "y"
       restart_game
     end
@@ -35,7 +36,5 @@ class Program
 
   def reset_board
     @config[:board] = Board.new
-    puts "board replaced:"
-    puts @config[:board].cells
   end
 end
