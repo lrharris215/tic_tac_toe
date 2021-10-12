@@ -6,6 +6,7 @@ require_relative "./constants"
 require_relative "./game_checker"
 require_relative "./validator"
 require_relative "./receiver"
+require_relative "./converter"
 
 class Game
   attr_reader :display, :board, :player_1, :player_2, :active_player, :game_checker
@@ -48,12 +49,12 @@ class Game
     end
   end
 
-  def play_again?
-    # asks if the player wants to restart the game
-    @display.output(PLAY_AGAIN)
-    answer = @receiver.input
-    answer === "yes" || answer === "y"
-  end
+  # def play_again?
+  #   # asks if the player wants to restart the game
+  #   @display.output(PLAY_AGAIN)
+  #   answer = @receiver.input
+  #   answer === "yes" || answer === "y"
+  # end
 
   private
 

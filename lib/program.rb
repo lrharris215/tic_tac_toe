@@ -2,6 +2,8 @@ require_relative "./game"
 class Program
   def initialize(config)
     @config = config
+    @display = config[:display]
+    @receiver = config[:receiver]
     @game = create_game
   end
 
@@ -22,7 +24,9 @@ class Program
   end
 
   def play_again?
-    if @game.play_again?
+    @display.output(PLAY_AGAIN)
+    answer = @receiver.input 
+    if answer === "yes" || answer === "y"
       restart_game
     end
   end
