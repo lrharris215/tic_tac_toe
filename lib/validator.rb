@@ -1,6 +1,6 @@
 class Validator
   def valid_move?(board, move, converter)
-    valid_input?(move) && valid_position?(board, move, converter)
+    valid_input?(move, converter) && valid_position?(board, move, converter)
   end
 
   private
@@ -13,9 +13,9 @@ class Validator
     false
   end
 
-  def valid_input?(input)
+  def valid_input?(input, converter)
     # num from 1 - 9
-    if /^[1-9]$/.match?(input)
+    if /^[1-9]$/.match?(converter.stringify(input))
       return true
     end
     false

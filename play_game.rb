@@ -6,7 +6,7 @@ config_object = {
   board: Board.new,
   game_checker: GameChecker.new,
   player_1: Player.new(Receiver.new($stdin, Validator.new, Converter.new), "X"),
-  player_2: Player.new(Receiver.new($stdin, Validator.new, Converter.new), "O"),
+  player_2: Player.new(ComputerReceiver.new(Validator.new, Converter.new), "O"),
   converter: Converter.new,
   receiver: Receiver.new($stdin, Validator.new, Converter.new)
 }
