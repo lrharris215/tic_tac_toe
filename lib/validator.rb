@@ -3,6 +3,10 @@ class Validator
     valid_input?(move, converter) && valid_position?(board, move, converter)
   end
 
+  def valid_player2?(choice)
+    /\bhuman\b/.match?(choice) || /\bcomputer\b/.match?(choice)
+  end
+
   private
 
   def valid_position?(board, position, converter)

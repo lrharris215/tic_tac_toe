@@ -19,4 +19,12 @@ class Receiver
     end
     @converter.numberfy(move)
   end
+
+  def get_player_two_choice
+    choice = input
+    until @validator.valid_player2?(choice)
+      choice = input
+    end
+    choice
+  end
 end

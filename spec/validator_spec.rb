@@ -23,4 +23,18 @@ describe "Validator" do
       expect(validator.valid_move?(board, "1", converter)).to be(false)
     end
   end
+
+  context "valid_player_2?" do 
+    it "accepts a human player as player 2" do
+      expect(validator.valid_player2?("human")).to be(true)
+    end
+
+    it "accepts a computer player as player 2" do 
+      expect(validator.valid_player2?("computer")).to be(true)
+    end
+
+    it "does not accept random words as player 2" do 
+      expect(validator.valid_player2?("puppy")).to be(false)
+    end
+  end
 end
