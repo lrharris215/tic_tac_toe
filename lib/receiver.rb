@@ -1,9 +1,6 @@
 class Receiver
-  def initialize(input_function, validator, converter)
-    @display = display
+  def initialize(input_function, converter)
     @input_function = input_function
-    @validator = validator
-
     @converter = converter
   end
 
@@ -11,12 +8,12 @@ class Receiver
     @input_function.gets.chomp
   end
 
-  def get_player_move(board, mark)
-    move = input
-
-    until @validator.valid_move?(board, move, @converter)
-      move = input
+  def get_player_input(validator, display)
+    p_input = input
+    until validator.valid?(p_input)
+      display.output(INPUT_ERROR)
+      p_input = input
     end
-    @converter.numberfy(move)
+    p_input
   end
 end

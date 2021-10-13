@@ -14,7 +14,9 @@ describe "Game" do
       player_1: TestPlayer.new(TestReceiver.new, "Z"),
       player_2: TestPlayer.new(TestReceiver.new, "Y"),
       converter: TestConverter.new,
-      receiver: TestReceiver.new
+      receiver: TestReceiver.new,
+      human_player: Player.new(TestReceiver.new, "O"),
+      computer_player: Player.new(ComputerReceiver.new, "O")
     }
   }
   subject(:game) { Game.new(config_object) }

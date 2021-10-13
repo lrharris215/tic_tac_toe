@@ -50,20 +50,16 @@ class TestBoard
 end
 
 class TestPlayer
-  attr_reader :mark
+  attr_reader :mark, :receiver
   def initialize(receiver, mark)
     @mark = mark
     # @validator = validator
     @receiver = receiver
   end
 
-  def get_input(display, board)
+  def get_input(display, board, validator)
     1
   end
-
-  #   def get_valid_input(display, board, converter)
-  #     1
-  #   end
 end
 
 class TestChecker
@@ -105,6 +101,6 @@ class TestReceiver
     "y"
   end
 
-  def get_player_move
+  def get_player_input(validator, display)
   end
 end

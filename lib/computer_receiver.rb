@@ -1,21 +1,13 @@
 class ComputerReceiver
-  def initialize(validator, converter)
-    @display = display
-    @validator = validator
-
-    @converter = converter
-  end
-
   def input
     rand(1..9)
   end
 
-  def get_player_move(board, mark)
+  def get_player_input(validator, display)
     move = input
-
-    until @validator.valid_move?(board, move, @converter)
+    until validator.valid?(move)
       move = input
     end
-    @converter.numberfy(move)
+    move
   end
 end
