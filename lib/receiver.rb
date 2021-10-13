@@ -30,14 +30,14 @@ class Receiver
   # end
 
   def get_player_input(validator, display)
-    #move val or player val
-    #move val would have the board inside it? 
-    #would thsi mean i'd need to create a new val every time? 
+    # move val or player val
+    # move val would have the board inside it?
+    # would thsi mean i'd need to create a new val every time?
     p_input = input
     until validator.valid?(p_input)
       display.output(INPUT_ERROR)
       p_input = input
     end
-    return p_input
+    p_input
   end
 end

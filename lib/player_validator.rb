@@ -1,5 +1,5 @@
 class PlayerValidator
-    def valid?(choice)   
+  def valid?(choice)
     /\bhuman\b/i.match?(choice) || /\bcomputer\b/i.match?(choice)
-    end
+  end
 end

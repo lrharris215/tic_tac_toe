@@ -1,20 +1,19 @@
 class MoveValidator
-    def initialize(board, converter)
-        @converter = converter
-        @board = board
-    end
-    def valid?(input)
-  
-        valid_input?(input, @converter) && valid_position?(@board, input, @converter)
-    end
+  def initialize(board, converter)
+    @converter = converter
+    @board = board
+  end
 
+  def valid?(input)
+    valid_input?(input, @converter) && valid_position?(@board, input, @converter)
+  end
 
-    
-    private
+  private
 
   def valid_position?(board, position, converter)
     # not taken by another piece
     if /^[1-9]$/.match?(converter.stringify(board.find_position(converter.numberfy(position))))
+        puts position
       return true
     end
     false

@@ -8,9 +8,9 @@ class Player
     @receiver = receiver
   end
 
-  def get_input(display, board)
+  def get_input(display, board, validator)
     display.output("It is Player #{@mark}'s turn!")
     display.output(GET_PLAYER_INPUT)
-    @receiver.get_player_move(display, board, @mark)
+    @receiver.get_player_input(validator, display)
   end
 end

@@ -5,11 +5,13 @@ class Program
     @config = config
     @display = config[:display]
     @receiver = config[:receiver]
+    @player_validator = config[:player_validator]
     @game = create_game
   end
 
   def create_game
     reset_board
+    set_move_validator
     Game.new(@config)
   end
 
@@ -35,7 +37,8 @@ class Program
 
   def configure_players
     @display.output(PLAYER_CHOICE)
-    player_choice = @receiver.get_player_two_choice(@display)
+
+    player_choice = @receiver.get_player_input(@player_validator, @display)
     if /\bhuman\b/i.match?(player_choice)
       set_player_two(@config[:human_player])
     elsif /\bcomputer\b/i.match?(player_choice)
@@ -51,5 +54,9 @@ class Program
 
   def set_player_two(player2)
     @config[:player_2] = player2
+  end
+
+  def set_move_validator
+    @config[:move_validator] = MoveValidator.new(@config[:board], @config[:converter])
   end
 end
