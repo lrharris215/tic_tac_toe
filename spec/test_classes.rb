@@ -50,7 +50,7 @@ class TestBoard
 end
 
 class TestPlayer
-  attr_reader :mark
+  attr_reader :mark, :receiver
   def initialize(receiver, mark)
     @mark = mark
     # @validator = validator

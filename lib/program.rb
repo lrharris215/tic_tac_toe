@@ -37,9 +37,9 @@ class Program
     @display.output(PLAYER_CHOICE)
     player_choice = @receiver.get_player_two_choice(@display)
     if /\bhuman\b/i.match?(player_choice)
-      set_player_two(Player.new(@receiver, "O"))
+      set_player_two(@config[:human_player])
     elsif /\bcomputer\b/i.match?(player_choice)
-      set_player_two(Player.new(ComputerReceiver.new(Validator.new, Converter.new), "O"))
+      set_player_two(@config[:computer_player])
     end
   end
 

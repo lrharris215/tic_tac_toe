@@ -9,7 +9,9 @@ describe "Program" do
       player_1: TestPlayer.new(TestReceiver.new, "Z"),
       player_2: TestPlayer.new(TestReceiver.new, "Y"),
       converter: TestConverter.new,
-      receiver: TestReceiver.new
+      receiver: TestReceiver.new,
+      human_player: TestPlayer.new(TestReceiver.new, "O"),
+      computer_player: TestPlayer.new(ComputerReceiver.new(TestValidator.new, TestConverter.new), "O"),
     }
   }
   subject(:program) { Program.new(config_object) }
