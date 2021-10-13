@@ -11,7 +11,7 @@ describe "Program" do
       converter: TestConverter.new,
       receiver: TestReceiver.new,
       human_player: TestPlayer.new(TestReceiver.new, "O"),
-      computer_player: TestPlayer.new(ComputerReceiver.new(TestValidator.new, TestConverter.new), "O"),
+      computer_player: TestPlayer.new(ComputerReceiver.new(TestValidator.new, TestConverter.new), "O")
     }
   }
   subject(:program) { Program.new(config_object) }
