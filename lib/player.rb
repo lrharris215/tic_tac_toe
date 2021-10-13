@@ -1,7 +1,7 @@
 require_relative "./constants"
 
 class Player
-  attr_reader :mark
+  attr_reader :mark, :receiver
   def initialize(receiver, mark)
     # X or O
     @mark = mark

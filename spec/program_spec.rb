@@ -26,13 +26,13 @@ describe "Program" do
     it "allows user to play against a human" do
       allow(program.receiver).to receive(:get_player_two_choice).and_return("human")
       program.configure_players
-      expect(program.config[:player_2].mark).to eq("O")
+      expect(program.config[:player_2].receiver).to be_instance_of(TestReceiver)
     end
 
     it "allows user to play against a computer" do
       allow(program.receiver).to receive(:get_player_two_choice).and_return("computer")
       program.configure_players
-      expect(program.config[:player_2].mark).to eq("O")
+      expect(program.config[:player_2].receiver).to be_instance_of(ComputerReceiver)
     end
   end
 end
