@@ -13,7 +13,7 @@ class MoveValidator
   def valid_position?(board, position, converter)
     # not taken by another piece
     if /^[1-9]$/.match?(converter.stringify(board.find_position(converter.numberfy(position))))
-        puts position
+      puts position
       return true
     end
     false
