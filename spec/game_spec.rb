@@ -16,7 +16,7 @@ describe "Game" do
       converter: TestConverter.new,
       receiver: TestReceiver.new,
       human_player: Player.new(TestReceiver.new, "O"),
-      computer_player: Player.new(ComputerReceiver.new(TestConverter.new), "O")
+      computer_player: Player.new(ComputerReceiver.new, "O")
     }
   }
   subject(:game) { Game.new(config_object) }

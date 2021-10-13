@@ -1,8 +1,4 @@
 class ComputerReceiver
-  def initialize(converter)
-    @converter = converter
-  end
-
   def input
     rand(1..9)
   end
@@ -12,6 +8,6 @@ class ComputerReceiver
     until validator.valid?(move)
       move = input
     end
-    @converter.numberfy(move)
+    move
   end
 end

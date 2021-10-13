@@ -1,7 +1,7 @@
 require_relative "../lib/computer_receiver"
 
 describe "ComputerReceiver" do
-  subject(:receiver) { ComputerReceiver.new(TestConverter.new) }
+  subject(:receiver) { ComputerReceiver.new }
 
   it "Receives random input" do
     expect(receiver.input).to be_between(1, 9)
