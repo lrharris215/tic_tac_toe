@@ -29,6 +29,8 @@ class TestBoard
   end
 
   def place_mark(mark, position)
+    puts "mark: #{mark}"
+    puts "pos #{position}"
     @cells[position - 1] = mark
   end
 
@@ -81,7 +83,7 @@ class TestChecker
 end
 
 class TestValidator
-  def valid_move?(board, move, converter)
+  def valid?(input)
     true
   end
 end

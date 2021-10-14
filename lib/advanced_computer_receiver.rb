@@ -30,25 +30,25 @@ class AdvancedComputerReceiver
     corners = [1, 3, 7, 9]
     sides = [2, 4, 6, 8]
 
-    if check_win(computer_player)
-      check_win(computer_player)
-    elsif check_win(human_player)
-      check_win(human_player)
+    if check_win(validator, computer_player)
+      check_win(validator, computer_player)
+    elsif check_win(validator, human_player)
+      check_win(validator, human_player)
     elsif create_fork
       create_fork
     elsif block_fork
       block_fork
     elsif center
       center
-    elsif opposite_corner
-      opposite_corner
+    elsif opposite_corner(validator)
+      opposite_corner(validator)
     elsif empty_space(corners)
       empty_space(corners)
     else empty_space(sides)
     end
   end
 
-  def check_win(player)
+  def check_win(validator, player)
     @board.cells.each do |cell|
       board_copy = @board.dup
       if validator.valid?(cell) && winner?(board_copy, cell, player)
@@ -59,8 +59,9 @@ class AdvancedComputerReceiver
   end
 
   def winner?(board, cell, player)
-    board.place_mark(player.mark, cell)
-    @game_checker.winner?(board, player)
+    b = board.dup
+    b.place_mark(player.mark, cell)
+    @game_checker.winner?(b, player)
   end
 
   def create_fork
@@ -76,7 +77,7 @@ class AdvancedComputerReceiver
     nil
   end
 
-  def opposite_corner
+  def opposite_corner(validator)
     if board.find_position(1) === @human_player.mark && validator.valid?(9)
       return 9
     elsif board.find_position(3) === @human_player.mark && validator.valid?(7)
