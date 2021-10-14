@@ -1,9 +1,11 @@
 class AdvancedComputerReceiver
-  def initialize(board, computer_player, human_player, game_checker)
+  def initialize(board, game_checker)
+    #need to use marks instead, bc player is initalized w/ a receiver. 
+    #maybe inside validator???
     @board = board
     @game_checker = game_checker
-    @human_player = human_player
-    @computer_player = computer_player
+    # @human_player = human_player
+    # @computer_player = computer_player
   end
 
   def input
