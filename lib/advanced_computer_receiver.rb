@@ -47,7 +47,7 @@ class AdvancedComputerReceiver
 def check_computer_win
     @board.cells.each do |cell|
         board_copy = @board.dup
-       if computer_win?(board_copy, cell)
+       if validator.valid?(cell) && computer_win?(board_copy, cell)
         return cell
        end
     end
@@ -57,7 +57,7 @@ end
 def check_human_win
     board.cells.each do |cell|
         board_copy = @board.dup
-        if block_human_win(board_copy, cell)
+        if validator.valid?(cell) && block_human_win(board_copy, cell)
             return cell
         end
     end
@@ -83,7 +83,9 @@ end
   end
 
   def center
-
+    if validator.valid?(5)
+        return 5
+    end
   end
 
   def opposite_corner
@@ -91,10 +93,22 @@ end
   end
 
   def empty_corner
-
+    possible_corners = []
+    [1,3,7,9].each do |cell|
+        if validator.valid?(cell)
+            possible_corners.push(cell)
+        end
+    end
+    possible_corners.sample
   end
 
   def empty_side
-
+    possible_sides = []
+    [2,4,6,8].each do |cell|
+        if(validator.valid?(cell))
+            possible_sides.push(cell)
+        end
+    end
+    possible_sides.sample
   end
 end
