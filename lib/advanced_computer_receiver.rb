@@ -7,15 +7,10 @@ class AdvancedComputerReceiver
   end
 
   def input
-    move = calculate_best_move
   end
 
   def get_player_input(validator, display)
-    move = input
-    until validator.valid?(move)
-      move = input
-    end
-    move
+    calculate_best_move(validator)
   end
 
   private
@@ -30,8 +25,8 @@ class AdvancedComputerReceiver
     # opposite corner
     # empty corner
     # empty side
-    corners = [1,3,7,9]
-    sides = [2,4,6,8]
+    corners = [1, 3, 7, 9]
+    sides = [2, 4, 6, 8]
 
     if check_computer_win
       check_computer_win
@@ -107,25 +102,25 @@ class AdvancedComputerReceiver
     nil
   end
 
-#   def empty_corner
-#     possible_corners = []
-#     [1, 3, 7, 9].each do |cell|
-#       if validator.valid?(cell)
-#         possible_corners.push(cell)
-#       end
-#     end
-#     possible_corners.sample
-#   end
+  #   def empty_corner
+  #     possible_corners = []
+  #     [1, 3, 7, 9].each do |cell|
+  #       if validator.valid?(cell)
+  #         possible_corners.push(cell)
+  #       end
+  #     end
+  #     possible_corners.sample
+  #   end
 
-#   def empty_side
-#     possible_sides = []
-#     [2, 4, 6, 8].each do |cell|
-#       if validator.valid?(cell)
-#         possible_sides.push(cell)
-#       end
-#     end
-#     possible_sides.sample
-#   end
+  #   def empty_side
+  #     possible_sides = []
+  #     [2, 4, 6, 8].each do |cell|
+  #       if validator.valid?(cell)
+  #         possible_sides.push(cell)
+  #       end
+  #     end
+  #     possible_sides.sample
+  #   end
 
   def empty_space(spaces)
     possible_spaces = []
