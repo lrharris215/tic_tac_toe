@@ -11,13 +11,13 @@ class AdvancedComputerReceiver
   def input
   end
 
-  def get_player_input(validator, display)
-    calculate_best_move(validator)
+  def get_player_input(validator, display, computer_player, human_player)
+    calculate_best_move(validator, computer_player, human_player)
   end
 
   private
 
-  def calculate_best_move(validator)
+  def calculate_best_move(validator, computer_player, human_player)
     # need to determine best move.
     # computer win
     # stop human win
@@ -30,10 +30,10 @@ class AdvancedComputerReceiver
     corners = [1, 3, 7, 9]
     sides = [2, 4, 6, 8]
 
-    if check_computer_win
-      check_computer_win
-    elsif check_human_win
-      check_human_win
+    if check_win(computer_player)
+      check_win(computer_player)
+    elsif check_win(human_player)
+      check_win(human_player)
     elsif create_fork
       create_fork
     elsif block_fork
@@ -43,39 +43,24 @@ class AdvancedComputerReceiver
     elsif opposite_corner
       opposite_corner
     elsif empty_space(corners)
-      empty_spaces(corners)
+      empty_space(corners)
     else empty_space(sides)
     end
   end
 
-  def check_computer_win
+  def check_win(player)
     @board.cells.each do |cell|
       board_copy = @board.dup
-      if validator.valid?(cell) && computer_win?(board_copy, cell)
+      if validator.valid?(cell) && winner?(board_copy, cell, player)
         return cell
       end
     end
     nil
   end
 
-  def check_human_win
-    board.cells.each do |cell|
-      board_copy = @board.dup
-      if validator.valid?(cell) && block_human_win(board_copy, cell)
-        return cell
-      end
-    end
-    nil
-  end
-
-  def computer_win?(board, cell)
-    board.place_mark(@computer_player.mark, cell)
-    @game_checker.winner?(board, @computer_player)
-  end
-
-  def block_human_win(board, cell)
-    board.place_mark(@human_player.mark, cell)
-    @game_checker.winner?(board, @human_player)
+  def winner?(board, cell, player)
+    board.place_mark(player.mark, cell)
+    @game_checker.winner?(board, player)
   end
 
   def create_fork
@@ -103,26 +88,6 @@ class AdvancedComputerReceiver
     end
     nil
   end
-
-  #   def empty_corner
-  #     possible_corners = []
-  #     [1, 3, 7, 9].each do |cell|
-  #       if validator.valid?(cell)
-  #         possible_corners.push(cell)
-  #       end
-  #     end
-  #     possible_corners.sample
-  #   end
-
-  #   def empty_side
-  #     possible_sides = []
-  #     [2, 4, 6, 8].each do |cell|
-  #       if validator.valid?(cell)
-  #         possible_sides.push(cell)
-  #       end
-  #     end
-  #     possible_sides.sample
-  #   end
 
   def empty_space(spaces)
     possible_spaces = []
