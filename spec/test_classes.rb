@@ -29,9 +29,7 @@ class TestBoard
   end
 
   def place_mark(mark, position)
-    puts "mark: #{mark}"
-    puts "pos #{position}"
-    @cells[position - 1] = mark
+    @cells[position.to_i - 1] = mark
   end
 
   def find_position(num)

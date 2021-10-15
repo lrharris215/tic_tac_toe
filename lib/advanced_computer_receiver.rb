@@ -49,18 +49,23 @@ class AdvancedComputerReceiver
   end
 
   def check_win(validator, player)
-    @board.cells.each do |cell|
+    @board.cells.each_with_index do |cell, position|
+        puts @board.cells
+        puts "cell: #{cell}"
+        puts "pos: #{position}"
       board_copy = @board.dup
-      if validator.valid?(cell) && winner?(board_copy, cell, player)
+      if validator.valid?(position + 1) && winner?(board_copy, position + 1, player)
         return cell
       end
     end
     nil
   end
 
-  def winner?(board, cell, player)
+  def winner?(board, position, player)
     b = board.dup
-    b.place_mark(player.mark, cell)
+    # puts "mark: #{player.mark}"
+    # puts "cell: #{cell}"
+    b.place_mark(player.mark, position)
     @game_checker.winner?(b, player)
   end
 
