@@ -41,11 +41,11 @@ class AdvancedComputerReceiver
     #   block_fork
     elsif center(validator)
       center(validator)
-    # elsif opposite_corner(validator)
-    #   opposite_corner(validator)
-    # elsif empty_space(corners)
-    #   empty_space(corners)
-    # else empty_space(sides)
+    elsif opposite_corner(validator, human_player)
+      opposite_corner(validator, human_player)
+    elsif empty_space(validator, corners)
+      empty_space(validator, corners)
+    else empty_space(validator, sides)
     end
   end
 
@@ -77,29 +77,29 @@ class AdvancedComputerReceiver
     nil
   end
 
-#   def opposite_corner(validator)
-#     if board.find_position(1) === @human_player.mark && validator.valid?(9)
-#       return 9
-#     elsif board.find_position(3) === @human_player.mark && validator.valid?(7)
-#       return 7
-#     elsif board.find_position(7) === @human_player.mark && validator.valid?(3)
-#       return 3
-#     elsif board.find_position(9) === @human_player.mark && validator.valid?(1)
-#       return 1
-#     end
-#     nil
-#   end
+  def opposite_corner(validator, human_player)
+    if @board.find_position(1) === human_player.mark && validator.valid?(9)
+      return 9
+    elsif @board.find_position(3) === human_player.mark && validator.valid?(7)
+      return 7
+    elsif @board.find_position(7) === human_player.mark && validator.valid?(3)
+      return 3
+    elsif @board.find_position(9) === human_player.mark && validator.valid?(1)
+      return 1
+    end
+    nil
+  end
 
-#   def empty_space(spaces)
-#     possible_spaces = []
+  def empty_space(validator, spaces)
+    possible_spaces = []
 
-#     spaces.each do |cell|
-#       if validator.valid?(cell)
-#         possible_sides.push(cell)
-#       end
-#     end
-#     possible_spaces.sample
-#   end
+    spaces.each do |cell|
+      if validator.valid?(cell)
+        possible_spaces.push(cell)
+      end
+    end
+    possible_spaces.sample
+  end
 
 def copy_board(board)
     new_board = Board.new
