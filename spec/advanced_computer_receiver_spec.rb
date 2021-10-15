@@ -17,24 +17,32 @@ describe "AdvancedComputerReceiver" do
     end
     context "CalculateBestMove" do 
         it "will win the game if a winning move is available" do 
-                board.place_mark("O", 1)
-                board.place_mark("O", 2)
+                board.place_mark(computer.mark, 1)
+                board.place_mark(computer.mark, 2)
                 
                 expect(advanced.get_player_input(v, display, computer, human)).to eq(3)
         end
 
         it "will block a human player from winning" do 
-                board.place_mark("X", 1)
-                board.place_mark("X", 4)
+                board.place_mark(human.mark, 1)
+                board.place_mark(human.mark, 4)
                 expect(advanced.get_player_input(v, display, computer, human)).to eq(7)
         end
 
         it "will create a fork" do 
+            board.place_mark(computer.mark, 2)
+            board.place_mark(human.mark, 5)
+            board.place_mark(computer.mark, 4)
 
+            expect(advanced.get_player_input(v, display, computer, human)).to eq(1)
         end
 
         it "will block the creation of a fork" do 
+            board.place_mark(human.mark, 2)
+            board.place_mark(computer.mark, 5)
+            board.place_mark(human.mark, 4)
 
+             expect(advanced.get_player_input(v, display, computer, human)).to eq(1)
         end
 
         it "will pick the center square if it's available" do 
@@ -42,7 +50,7 @@ describe "AdvancedComputerReceiver" do
         end
 
         it "will pick the opposite corner from the human player" do 
-            board.place_mark("X", 1)
+            board.place_mark(human.mark, 1)
             allow(advanced).to receive(:center).and_return(false)
             expect(advanced.get_player_input(v, display, computer, human)).to eq(9)
 
