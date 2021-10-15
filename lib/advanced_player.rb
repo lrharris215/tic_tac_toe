@@ -9,6 +9,6 @@ class AdvancedComputerPlayer
   def get_input(display, board, validator)
     display.output("It is Player #{@mark}'s turn!")
     display.output(GET_PLAYER_INPUT)
-    @receiver.get_player_input(validator, display)
+    @receiver.get_player_input(validator, display, self, @human_player)
   end
 end

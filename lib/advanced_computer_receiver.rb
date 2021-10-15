@@ -64,11 +64,26 @@ class AdvancedComputerReceiver
     @game_checker.winner?(board, player)
   end
 
-#   def create_fork
-#   end
+  def create_fork
 
-#   def block_fork
-#   end
+  end
+
+  def block_fork
+  end
+
+  def is_fork?
+    #forks are when there are 2 ways to win
+    #basically taking over a corner
+    #or 2 corners i guess when u have the center and the opposite ones are free but i dont think that will ever actially happen
+
+    #too many forks to list out. Don't forget about the center. 
+    #is a fork if more than 2 cases of 2 in a row? 
+    #is that even possible w/o a fork? probably not??
+
+    
+    
+
+  end
 
   def center(validator)
     if validator.valid?(5)
