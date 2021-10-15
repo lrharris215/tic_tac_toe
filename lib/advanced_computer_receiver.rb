@@ -39,8 +39,8 @@ class AdvancedComputerReceiver
     #   create_fork
     # elsif block_fork
     #   block_fork
-    # elsif center
-    #   center
+    elsif center(validator)
+      center(validator)
     # elsif opposite_corner(validator)
     #   opposite_corner(validator)
     # elsif empty_space(corners)
@@ -51,9 +51,6 @@ class AdvancedComputerReceiver
 
   def check_win(validator, player)
     @board.cells.each_with_index do |cell, position|
-        puts @board.cells
-        puts "cell: #{cell}"
-        puts "pos: #{position}"
       board_copy = copy_board(@board)
       if validator.valid?(position + 1) && winner?(board_copy, position + 1, player)
         return position + 1
@@ -63,12 +60,8 @@ class AdvancedComputerReceiver
   end
 
   def winner?(board, position, player)
-    board_copy = copy_board(board)
-    puts "winner pos: #{position}"
-    board_copy.place_mark(player.mark, position)
-    puts "final_board: #{board_copy.cells}"
-     puts @game_checker.winner?(board_copy, player)
-    @game_checker.winner?(board_copy, player)
+    board.place_mark(player.mark, position)
+    @game_checker.winner?(board, player)
   end
 
 #   def create_fork
@@ -77,12 +70,12 @@ class AdvancedComputerReceiver
 #   def block_fork
 #   end
 
-#   def center
-#     if validator.valid?(5)
-#       return 5
-#     end
-#     nil
-#   end
+  def center(validator)
+    if validator.valid?(5)
+      return 5
+    end
+    nil
+  end
 
 #   def opposite_corner(validator)
 #     if board.find_position(1) === @human_player.mark && validator.valid?(9)

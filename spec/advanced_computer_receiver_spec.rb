@@ -17,7 +17,9 @@ describe "AdvancedComputerReceiver" do
         end
 
         it "will block a human player from winning" do 
-
+                board.place_mark("X", 1)
+                board.place_mark("X", 4)
+                expect(advanced.get_player_input(v, display, computer, human)).to eq(7)
         end
 
         it "will create a fork" do 
@@ -29,7 +31,7 @@ describe "AdvancedComputerReceiver" do
         end
 
         it "will pick the center square if it's available" do 
-
+                expect(advanced.get_player_input(v, display, computer, human)).to eq(5)
         end
 
         it "will pick the opposite corner from the human player" do 
