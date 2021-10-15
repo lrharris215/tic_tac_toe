@@ -1,7 +1,7 @@
 describe "AdvancedComputerReceiver" do 
-    let(:board) { TestBoard.new}
+    let(:board) { Board.new}
     #need a test advanced player??
-    let(:game_checker) { TestChecker.new }
+    let(:game_checker) { GameChecker.new }
     
     subject(:advanced) { AdvancedComputerReceiver.new(board, game_checker)}
     let(:computer) { TestPlayer.new(advanced, "O")}
