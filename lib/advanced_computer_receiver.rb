@@ -1,7 +1,7 @@
 class AdvancedComputerReceiver
   def initialize(board, game_checker)
-    #need to use marks instead, bc player is initalized w/ a receiver. 
-    #maybe inside validator???
+    # need to use marks instead, bc player is initalized w/ a receiver.
+    # maybe inside validator???
     @board = board
     @game_checker = game_checker
     # @human_player = human_player
@@ -29,13 +29,13 @@ class AdvancedComputerReceiver
     # empty side
     corners = [1, 3, 7, 9]
     sides = [2, 4, 6, 8]
-  
+
     if check_function(validator, computer_player, :winner?)
       check_function(validator, computer_player, :winner?)
     elsif check_function(validator, human_player, :winner?)
       check_function(validator, human_player, :winner?)
     elsif check_function(validator, computer_player, :is_fork?)
-        check_function(validator, computer_player, :is_fork?)
+      check_function(validator, computer_player, :is_fork?)
     elsif check_function(validator, human_player, :is_fork?)
       check_function(validator, human_player, :is_fork?)
     elsif center(validator)
@@ -48,7 +48,7 @@ class AdvancedComputerReceiver
     end
   end
 
-  #might rename this later, can't think of anything more specific rn
+  # might rename this later, can't think of anything more specific rn
   def check_function(validator, player, function)
     @board.cells.each_with_index do |cell, position|
       board_copy = copy_board(@board)
@@ -65,29 +65,18 @@ class AdvancedComputerReceiver
   end
 
   def is_fork?(board, position, player)
-    #forks are when there are 2 ways to win
-    #basically taking over a corner
-    #or 2 corners i guess when u have the center and the opposite ones are free but i dont think that will ever actially happen
-
-    #too many forks to list out. Don't forget about the center. 
-    #is a fork if more than 2 cases of 2 in a row? 
-    #is that even possible w/o a fork? probably not??
-
     win_count = 0
     board.place_mark(player.mark, position)
 
+    # needs validator, maybe move to gamechecker???
     board.cells.each_with_index do |cell, position|
-        board_copy = copy_board(board)
-       if winner?(board_copy, position + 1, player)
+      board_copy = copy_board(board)
+      if winner?(board_copy, position + 1, player)
         win_count += 1
-       end
+      end
     end
 
-    if win_count >= 2
-        return position
-    else 
-        nil
-    end
+    win_count >= 2
   end
 
   def center(validator)
@@ -121,11 +110,11 @@ class AdvancedComputerReceiver
     possible_spaces.sample
   end
 
-def copy_board(board)
+  def copy_board(board)
     new_board = Board.new
     board.cells.each_with_index do |cell, index|
-        new_board.place_mark(cell, index + 1)
+      new_board.place_mark(cell, index + 1)
     end
     new_board
-end
+  end
 end
