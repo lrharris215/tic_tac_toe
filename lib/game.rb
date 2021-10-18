@@ -10,6 +10,7 @@ require_relative "./computer_receiver"
 require_relative "./player_validator"
 require_relative "./move_validator"
 require_relative "./advanced_computer_receiver"
+require_relative "./advanced_player"
 
 class Game
   attr_reader :display, :board, :player_1, :player_2, :active_player, :game_checker

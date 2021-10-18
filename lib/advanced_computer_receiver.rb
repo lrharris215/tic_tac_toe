@@ -24,18 +24,25 @@ class AdvancedComputerReceiver
     sides = [2, 4, 6, 8]
 
     if check_function(validator, computer_player, :winner?)
+        puts "computer win"
       check_function(validator, computer_player, :winner?)
     elsif check_function(validator, human_player, :winner?)
+        puts "block human"
       check_function(validator, human_player, :winner?)
     elsif check_function(validator, computer_player, :is_fork?)
+        puts "create fork"
       check_function(validator, computer_player, :is_fork?)
+     
     elsif check_function(validator, human_player, :is_fork?)
+         puts "block fork"
       check_function(validator, human_player, :is_fork?)
     elsif center(validator)
       center(validator)
     elsif opposite_corner(validator, human_player)
+        puts "opp corner"
       opposite_corner(validator, human_player)
     elsif empty_space(validator, corners)
+        puts "corners"
       empty_space(validator, corners)
     else empty_space(validator, sides)
     end

@@ -1,4 +1,5 @@
 class AdvancedComputerPlayer
+  attr_reader :mark, :receiver
   def initialize(receiver, mark, human_player)
     # X or O
     @mark = mark
