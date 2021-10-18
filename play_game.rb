@@ -11,7 +11,7 @@ config_object = {
   receiver: Receiver.new($stdin, Converter.new),
   human_player: Player.new(Receiver.new($stdin, Converter.new), "O"),
   computer_player: Player.new(ComputerReceiver.new, "O"),
-  player_validator: PlayerValidator.new,
+  player_validator: PlayerValidator.new
 }
 # took out validators from config file for now
 program = Program.new(config_object)
