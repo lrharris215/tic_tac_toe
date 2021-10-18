@@ -29,8 +29,7 @@ class AdvancedComputerReceiver
     # empty side
     corners = [1, 3, 7, 9]
     sides = [2, 4, 6, 8]
-
-    
+  
     if check_win(validator, computer_player)
       check_win(validator, computer_player)
     elsif check_win(validator, human_player)
@@ -86,9 +85,8 @@ class AdvancedComputerReceiver
     win_count = 0
     board.place_mark(player.mark, position)
 
-    board_copy = copy_board(board)
-
     board.cells.each_with_index do |cell, position|
+        board_copy = copy_board(board)
        if winner?(board_copy, position + 1, player)
         win_count += 1
        end
