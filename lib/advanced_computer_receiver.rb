@@ -1,16 +1,9 @@
 class AdvancedComputerReceiver
   def initialize(board, game_checker)
-    # need to use marks instead, bc player is initalized w/ a receiver.
-    # maybe inside validator???
     @board = board
     @game_checker = game_checker
-    # @human_player = human_player
-    # @computer_player = computer_player
   end
-
-  def input
-  end
-
+  
   def get_player_input(validator, display, computer_player, human_player)
     calculate_best_move(validator, computer_player, human_player)
   end
