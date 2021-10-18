@@ -12,6 +12,7 @@ class Program
   def create_game
     reset_board
     set_move_validator
+    configure_players
     Game.new(@config)
   end
 
@@ -22,7 +23,6 @@ class Program
   end
 
   def restart_game
-    configure_players
     @game = create_game
     play_game
   end

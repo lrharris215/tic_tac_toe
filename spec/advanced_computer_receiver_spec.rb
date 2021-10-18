@@ -65,15 +65,5 @@ describe "AdvancedComputerReceiver" do
       allow(advanced).to receive(:center).and_return(false)
       expect([2, 4, 6, 8]).to include(advanced.get_player_input(validator, display, computer, human))
     end
-
-    it "will pass this test" do 
-        board.place_mark(human.mark, 5)
-        board.place_mark(computer.mark, 9)
-        board.place_mark(human.mark, 3)
-        board.place_mark(computer.mark, 7)
-        board.place_mark(human.mark, 8)
-        expect(advanced.get_player_input(validator, display, computer, human)).to eq(2)
-        
-    end
   end
 end
