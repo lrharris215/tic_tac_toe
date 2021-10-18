@@ -51,7 +51,7 @@ class AdvancedComputerReceiver
   # might rename this later, can't think of anything more specific rn
   def check_function(validator, player, function)
     @board.cells.each_with_index do |cell, position|
-      board_copy = copy_board(@board)
+      board_copy = @board.copy_board
       if validator.valid?(position + 1) && method(function).call(board_copy, position + 1, player)
         return position + 1
       end
@@ -70,7 +70,7 @@ class AdvancedComputerReceiver
 
     # needs validator, maybe move to gamechecker???
     board.cells.each_with_index do |cell, position|
-      board_copy = copy_board(board)
+      board_copy = board.copy_board
       if winner?(board_copy, position + 1, player)
         win_count += 1
       end
@@ -108,13 +108,5 @@ class AdvancedComputerReceiver
       end
     end
     possible_spaces.sample
-  end
-
-  def copy_board(board)
-    new_board = Board.new
-    board.cells.each_with_index do |cell, index|
-      new_board.place_mark(cell, index + 1)
-    end
-    new_board
   end
 end
