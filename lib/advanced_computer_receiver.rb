@@ -3,7 +3,7 @@ class AdvancedComputerReceiver
     @board = board
     @game_checker = game_checker
   end
-  
+
   def get_player_input(validator, display, computer_player, human_player)
     calculate_best_move(validator, computer_player, human_player)
   end
@@ -45,26 +45,25 @@ class AdvancedComputerReceiver
   def check_function(validator, player, function)
     @board.cells.each_with_index do |cell, position|
       board_copy = @board.copy_board
-      if validator.valid?(position + 1) && method(function).call(board_copy, position + 1, player)
+      if validator.valid?(position + 1) && method(function).call(board_copy, position + 1, player, validator)
         return position + 1
       end
     end
     nil
   end
 
-  def winner?(board, position, player)
+  def winner?(board, position, player, validator = nil)
     board.place_mark(player.mark, position)
     @game_checker.winner?(board, player)
   end
 
-  def is_fork?(board, position, player)
+  def is_fork?(board, position, player, validator)
     win_count = 0
     board.place_mark(player.mark, position)
 
-    # needs validator, maybe move to gamechecker???
     board.cells.each_with_index do |cell, position|
       board_copy = board.copy_board
-      if winner?(board_copy, position + 1, player)
+      if validator.valid?(position + 1) && winner?(board_copy, position + 1, player)
         win_count += 1
       end
     end
