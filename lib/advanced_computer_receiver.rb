@@ -30,14 +30,14 @@ class AdvancedComputerReceiver
     corners = [1, 3, 7, 9]
     sides = [2, 4, 6, 8]
   
-    if check_win(validator, computer_player)
-      check_win(validator, computer_player)
-    elsif check_win(validator, human_player)
-      check_win(validator, human_player)
-    elsif check_fork(validator, computer_player)
-        check_fork(validator, computer_player)
-    elsif check_fork(validator, human_player)
-      check_fork(validator, human_player)
+    if check_function(validator, computer_player, :winner?)
+      check_function(validator, computer_player, :winner?)
+    elsif check_function(validator, human_player, :winner?)
+      check_function(validator, human_player, :winner?)
+    elsif check_function(validator, computer_player, :is_fork?)
+        check_function(validator, computer_player, :is_fork?)
+    elsif check_function(validator, human_player, :is_fork?)
+      check_function(validator, human_player, :is_fork?)
     elsif center(validator)
       center(validator)
     elsif opposite_corner(validator, human_player)
@@ -48,10 +48,11 @@ class AdvancedComputerReceiver
     end
   end
 
-  def check_win(validator, player)
+  #might rename this later, can't think of anything more specific rn
+  def check_function(validator, player, function)
     @board.cells.each_with_index do |cell, position|
       board_copy = copy_board(@board)
-      if validator.valid?(position + 1) && winner?(board_copy, position + 1, player)
+      if validator.valid?(position + 1) && method(function).call(board_copy, position + 1, player)
         return position + 1
       end
     end
@@ -62,16 +63,6 @@ class AdvancedComputerReceiver
     board.place_mark(player.mark, position)
     @game_checker.winner?(board, player)
   end
-
- def check_fork(validator, player)
-    @board.cells.each_with_index do |cell, position|
-        board_copy = copy_board(@board)
-        if validator.valid?(position + 1) && is_fork?(board_copy, position + 1, player)
-            return position + 1
-        end
-    end
-    nil 
- end
 
   def is_fork?(board, position, player)
     #forks are when there are 2 ways to win
