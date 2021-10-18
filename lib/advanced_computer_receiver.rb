@@ -35,10 +35,10 @@ class AdvancedComputerReceiver
       check_win(validator, computer_player)
     elsif check_win(validator, human_player)
       check_win(validator, human_player)
-    # elsif create_fork
-    #   create_fork
-    # elsif block_fork
-    #   block_fork
+    elsif check_fork(validator, computer_player)
+        check_fork(validator, computer_player)
+    elsif check_fork(validator, human_player)
+      check_fork(validator, human_player)
     elsif center(validator)
       center(validator)
     elsif opposite_corner(validator, human_player)
@@ -64,14 +64,17 @@ class AdvancedComputerReceiver
     @game_checker.winner?(board, player)
   end
 
-  def create_fork
+ def check_fork(validator, player)
+    @board.cells.each_with_index do |cell, position|
+        board_copy = copy_board(@board)
+        if validator.valid?(position + 1) && is_fork?(board_copy, position + 1, player)
+            return position + 1
+        end
+    end
+    nil 
+ end
 
-  end
-
-  def block_fork
-  end
-
-  def is_fork?
+  def is_fork?(board, position, player)
     #forks are when there are 2 ways to win
     #basically taking over a corner
     #or 2 corners i guess when u have the center and the opposite ones are free but i dont think that will ever actially happen
@@ -80,9 +83,22 @@ class AdvancedComputerReceiver
     #is a fork if more than 2 cases of 2 in a row? 
     #is that even possible w/o a fork? probably not??
 
-    
-    
+    win_count = 0
+    board.place_mark(player.mark, position)
 
+    board_copy = copy_board(board)
+
+    board.cells.each_with_index do |cell, position|
+       if winner?(board_copy, position + 1, player)
+        win_count += 1
+       end
+    end
+
+    if win_count >= 2
+        return position
+    else 
+        nil
+    end
   end
 
   def center(validator)
