@@ -23,30 +23,24 @@ class AdvancedComputerReceiver
     corners = [1, 3, 7, 9]
     sides = [2, 4, 6, 8]
 
-    if check_function(validator, computer_player, :winner?)
-      #   puts "computer win"
-      check_function(validator, computer_player, :winner?)
-    elsif check_function(validator, human_player, :winner?)
-      #   puts "block human"
-      check_function(validator, human_player, :winner?)
-    elsif check_function(validator, computer_player, :is_fork?)
-      #   puts "create fork"
-      check_function(validator, computer_player, :is_fork?)
 
-    elsif check_function(validator, human_player, :is_fork?)
-      #   puts "block fork"
-      check_function(validator, human_player, :is_fork?)
-    elsif center(validator)
-      center(validator)
-    elsif opposite_corner(validator, human_player)
-      #   puts "opp corner"
-      opposite_corner(validator, human_player)
-    elsif empty_space(validator, corners)
-      #   puts "corners"
-      empty_space(validator, corners)
-    else empty_space(validator, sides)
-    end
+    best_move = check_function(validator, computer_player, :winner?)
+        return best_move if best_move
+    best_move = check_function(validator, human_player, :winner?)
+        return best_move if best_move
+    best_move = check_function(validator, computer_player, :is_fork?)
+        return best_move if best_move
+    best_move = check_function(validator, human_player, :is_fork?)
+        return best_move if best_move
+    best_move = center(validator)
+        return best_move if best_move
+    best_move = opposite_corner(validator, human_player)
+        return best_move if best_move
+    best_move = empty_space(validator, corners)
+      return best_move if best_move
+      return empty_space(validator, sides)
   end
+
 
   # might rename this later, can't think of anything more specific rn
   def check_function(validator, player, function)
