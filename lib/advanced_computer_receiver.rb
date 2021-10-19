@@ -11,18 +11,8 @@ class AdvancedComputerReceiver
   private
 
   def calculate_best_move(validator, computer_player, human_player)
-    # need to determine best move.
-    # computer win
-    # stop human win
-    # fork
-    # block fork
-    # center
-    # opposite corner
-    # empty corner
-    # empty side
     corners = [1, 3, 7, 9]
     sides = [2, 4, 6, 8]
-
 
     computer_win = check_function(validator, computer_player, :winner?)
     human_win = check_function(validator, human_player, :winner?)
@@ -31,29 +21,12 @@ class AdvancedComputerReceiver
     empty_corner = empty_space(validator, corners)
     empty_side = empty_space(validator, sides)
 
-    # move_arr = [computer_win, human_win, computer_fork, human_fork, center(validator), opposite_corner(validator, human_player), empty_corner, empty_side]
+    move_arr = [computer_win, human_win, computer_fork, human_fork, center(validator), opposite_corner(validator, human_player), empty_corner, empty_side]
 
-    # move_arr.each do |move|
-    #     return move if move
-    # end
-
-    best_move = check_function(validator, computer_player, :winner?)
-        return best_move if best_move
-    best_move = check_function(validator, human_player, :winner?)
-        return best_move if best_move
-    best_move = check_function(validator, computer_player, :is_fork?)
-        return best_move if best_move
-    best_move = check_function(validator, human_player, :is_fork?)
-        return best_move if best_move
-    best_move = center(validator)
-        return best_move if best_move
-    best_move = opposite_corner(validator, human_player)
-        return best_move if best_move
-    best_move = empty_space(validator, corners)
-      return best_move if best_move
-      return empty_space(validator, sides)
+    move_arr.each do |move|
+      return move if move
+    end
   end
-
 
   # might rename this later, can't think of anything more specific rn
   def check_function(validator, player, function)
