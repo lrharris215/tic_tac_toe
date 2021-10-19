@@ -17,14 +17,14 @@ class AdvancedComputerReceiver
     computer_win = check_function(validator, computer_player, @board, :winner?)
     human_win = check_function(validator, human_player, @board, :winner?)
     computer_fork = check_function(validator, computer_player, @board, :is_fork?)
+    win_setup = set_up_win(computer_player, human_player, validator, sides, corners)
     human_fork = check_function(validator, human_player, @board, :is_fork?)
     empty_corner = empty_space(validator, corners)
     empty_side = empty_space(validator, sides)
 
-    move_arr = [computer_win, human_win, computer_fork, set_win(computer_player, human_player, validator, sides, corners), human_fork, center(validator), opposite_corner(validator, human_player), empty_corner, empty_side]
+    move_arr = [computer_win, human_win, computer_fork, win_setup, human_fork, center(validator), opposite_corner(validator, human_player), empty_corner, empty_side]
 
     move_arr.each_with_index do |move, idx|
-      puts "move: #{move} idx: #{idx}"
       return move if move
     end
   end
@@ -59,7 +59,15 @@ class AdvancedComputerReceiver
     win_count >= 2
   end
 
-  def set_up_win(player, validator, cells)
+  def set_up_win(computer_player, human_player, validator, sides, corners)
+    if @board.find_position(5) === computer_player.mark
+      set_win(computer_player, validator, sides)
+    elsif @board.find_position(5) === human_player.mark
+      set_win(computer_player, validator, corners)
+    end
+  end
+
+  def set_win(player, validator, cells)
     cells.each do |cell|
       if validator.valid?(cell)
         board_copy = @board.copy_board
@@ -70,14 +78,6 @@ class AdvancedComputerReceiver
       end
     end
     nil
-  end
-
-  def set_win(computer_player, human_player, validator, sides, corners)
-    if @board.find_position(5) === computer_player.mark
-      set_up_win(computer_player, validator, sides)
-    elsif @board.find_position(5) === human_player.mark
-      set_up_win(computer_player, validator, corners)
-    end
   end
 
   def center(validator)
