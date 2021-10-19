@@ -14,24 +14,25 @@ class AdvancedComputerReceiver
     corners = [1, 3, 7, 9]
     sides = [2, 4, 6, 8]
 
-    computer_win = check_function(validator, computer_player, :winner?)
-    human_win = check_function(validator, human_player, :winner?)
-    computer_fork = check_function(validator, computer_player, :is_fork?)
-    human_fork = check_function(validator, human_player, :is_fork?)
+    computer_win = check_function(validator, computer_player, @board, :winner?)
+    human_win = check_function(validator, human_player, @board, :winner?)
+    computer_fork = check_function(validator, computer_player, @board, :is_fork?)
+    human_fork = check_function(validator, human_player, @board, :is_fork?)
     empty_corner = empty_space(validator, corners)
     empty_side = empty_space(validator, sides)
 
-    move_arr = [computer_win, human_win, computer_fork, human_fork, center(validator), opposite_corner(validator, human_player), empty_corner, empty_side]
+    move_arr = [computer_win, human_win, computer_fork, set_up_win(computer_player, validator, corners), human_fork, center(validator), opposite_corner(validator, human_player), empty_corner, empty_side]
 
-    move_arr.each do |move|
+    move_arr.each_with_index do |move, idx|
+      puts "move: #{move} idx: #{idx}"
       return move if move
     end
   end
 
   # might rename this later, can't think of anything more specific rn
-  def check_function(validator, player, function)
-    @board.cells.each_with_index do |cell, position|
-      board_copy = @board.copy_board
+  def check_function(validator, player, board, function)
+    board.cells.each_with_index do |cell, position|
+      board_copy = board.copy_board
       if validator.valid?(position + 1) && method(function).call(board_copy, position + 1, player, validator)
         return position + 1
       end
@@ -56,6 +57,21 @@ class AdvancedComputerReceiver
     end
 
     win_count >= 2
+  end
+
+  def set_up_win(player, validator, cells)
+    cells.each do |cell|
+      if validator.valid?(cell)
+        puts "position: #{cell} + #{validator.valid?(cell)}"
+        board_copy = @board.copy_board
+        board_copy.place_mark(player.mark, cell)
+        if check_function(validator, player, board_copy, :winner?)
+          puts "setupwin"
+          return cell
+        end
+      end
+    end
+    nil
   end
 
   def center(validator)
