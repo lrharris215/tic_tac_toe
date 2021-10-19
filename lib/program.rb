@@ -6,7 +6,7 @@ class Program
     @display = config[:display]
     @receiver = config[:receiver]
     @player_validator = config[:player_validator]
-    @game = create_game
+    
   end
 
   def create_game
