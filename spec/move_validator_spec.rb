@@ -19,7 +19,6 @@ describe "move_validator" do
       player1 = TestPlayer.new(TestValidator, "Z")
 
       board.place_mark(player1.mark, 1)
-      puts board.cells
       expect(validator.valid?("1")).to be(false)
     end
   end

@@ -29,7 +29,7 @@ class TestBoard
   end
 
   def place_mark(mark, position)
-    @cells[position - 1] = mark
+    @cells[position.to_i - 1] = mark
   end
 
   def find_position(num)
@@ -81,7 +81,7 @@ class TestChecker
 end
 
 class TestValidator
-  def valid_move?(board, move, converter)
+  def valid?(input)
     true
   end
 end

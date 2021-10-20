@@ -53,6 +53,14 @@ class Board
     false
   end
 
+  def copy_board
+    new_board = Board.new
+    @cells.each_with_index do |cell, index|
+      new_board.place_mark(cell, index + 1)
+    end
+    new_board
+  end
+
   private
 
   def find_rows
